@@ -1,21 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'ml_app:home'%}">Home</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="{%url 'ml_app:about'%}">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">GitHub</a>
-            </li> -->
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="{% url 'ml_app:home' %}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Deepfake <span>Detector</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+            <span class="model-badge d-none d-md-inline-flex">ResNeXt50 + LSTM • 87% Accuracy</span>
+            <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" class="developer-nav-chip text-decoration-none">
+                <span class="dot"></span>
+                <span>Patel Shubh</span>
+            </a>
+        </div>
     </div>
 </nav>

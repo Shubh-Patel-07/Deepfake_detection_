@@ -13,4 +13,5 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('predict/', predict_page, name='predict'),
     path('cuda_full/',cuda_full,name='cuda_full'),
+    path('video_feed/<str:filename>/', views.stream_video, name='video_feed'),
 ]

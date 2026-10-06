@@ -1,69 +1,101 @@
 {% extends 'base.html' %}
 {% load static %}
-{%block content%}
-{%if no_faces%}
-<div class="container">
-  <div class="logo text-center mb-3"><img src="{% static 'images/logo1.png'%}" alt="Logo" ></div>
-  <hr />
-  <div class="alert alert-danger">
-    No faces detected. Cannot process the video.
-  </div>
+
+{% block content %}
+<div class="container my-5">
+    <div class="report-header">
+        <span class="pill-tag">Forensic Analysis Complete</span>
+        <h2>Verification Report</h2>
+        <p>Results generated using spatio-temporal feature modeling across the selected temporal sequence.</p>
+    </div>
+
+    <!-- VERDICT BANNER -->
+    <div class="verdict-banner {% if output == 'REAL' %}real{% else %}fake{% endif %}">
+        <div class="verdict-badge">AUTHENTICITY VERDICT</div>
+        <div class="verdict-text">{{ output }}</div>
+        
+        <!-- Accuracy Progress Gauge -->
+        <div class="meter-container">
+            <div class="meter-labels">
+                <span>Model Confidence</span>
+                <span>{{ confidence }}%</span>
+            </div>
+            <div class="meter-bar">
+                <div class="meter-fill" style="width: {{ confidence }}%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO VERIFICATION CARD -->
+    <div class="main-card mb-4 text-center" style="max-width: 680px;">
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-heading); margin-bottom: 0.75rem;">
+            Playback & Spatial Tracking
+        </h4>
+        <video height="340" width="600" id="predict-media" controls autoplay muted playsinline style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-soft);">
+            <source src="/video_feed/{{ original_video }}/" type="video/mp4" />
+            <source src="{% static original_video %}" type="video/mp4" />
+            <source src="{{ MEDIA_URL }}{{ original_video }}" type="video/mp4" />
+        </video>
+        <p style="color: var(--text-sub); font-size: 0.8rem; margin-top: 8px;">
+            Client-side face landmark localization running in real time.
+        </p>
+    </div>
+
+    <!-- EXTRACTED FRAMES -->
+    <div class="strip-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+            <line x1="7" y1="2" x2="7" y2="22"></line>
+            <line x1="17" y1="2" x2="17" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+        </svg>
+        Temporal Extracted Frames (Stride Sequence)
+    </div>
+    <div class="image-strip mb-4">
+        {% for each_image in preprocessed_images %}
+        <img src="{% static each_image %}" alt="" height="150" style="min-width: 150px; max-width: 240px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" onerror="this.style.display='none'" />
+        {% endfor %}
+    </div>
+
+    <!-- CROPPED FACES -->
+    <div class="strip-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        Normalized Facial Landmarks (112×112)
+    </div>
+    <div class="image-strip mb-5">
+        {% for each_image in faces_cropped_images %}
+        <img src="{% static each_image %}" alt="" width="112" height="112" style="object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" onerror="this.style.display='none'" />
+        {% endfor %}
+    </div>
+
+    <!-- ACTION BUTTON -->
+    <div class="text-center mb-5">
+        <a href="{% url 'ml_app:home' %}" class="btn-action" style="display: inline-flex; width: auto; padding: 0.8rem 2rem; text-decoration: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Analyze Another Video</span>
+        </a>
+    </div>
 </div>
-{%else%}
-<div class="container">
-  <div class="logo text-center mb-3"><img src="{% static 'images/logo1.png'%}" alt="Logo" ></div>
-  <hr />
+{% endblock %}
 
-  <h3>Frames Split</h3>
-  <div id="preprocessed_images" class="col-12 mt-4 mb-2">
-    {% for each_image in preprocessed_images %}
-    <img src="{%static each_image%}" class="preprocess" width=auto height="250" />
-    {%endfor%}
-  </div>
-
-
-  <h3>Face Cropped Frames</h3>
-  <div id="faces_images" class="col-12 mb-2">
-    {% for each_image in faces_cropped_images %}
-    <img src="{%static each_image%}" class="faces" width=auto height="150" />
-    {%endfor%}
-  </div>
-
-  <div class="result text-center">
-    <h3>Play to see Result</h3>
-    <video height="320" width="640" id="predict-media" controls>
-      <source src="{{MEDIA_URL}}{{original_video}}" type="video/mp4" codecs="avc1.4d002a" />
-    </video>
-    {%if output == "REAL" %}
-    <h4 class="mx-auto">Result: <span style="color:green">{{output}}</span>
-      <img src="{% static 'images/thumpup.png'%}" alt="real" height="100px" width=auto>
-      {%else%}
-      <h4 class="mx-auto">Result: <span style="color:red">{{output}}</span>
-        <img src="{% static 'images/thumpdown.png'%}" alt="fake" height="100px" width=auto >
-      {%endif%}
-  </div>
-<!--
-  <h3>Heat Maps</h3>
-  <div id="heatmap_images" class="col-12 mb-4 ">
-    {% for each_heatmap_image in heatmap_images %}
-    <img src="{%static each_heatmap_image%}" class="heat-map" width="100" height="150" />
-    {%endfor%}
-  </div>
-</div>
--->
-{%endif%}
-{%endblock%}
-{%block js_cripts%}
-<script src="{%static 'js/face-api.min.js'%}"></script>
+{% block js_cripts %}
+<script src="{% static 'js/face-api.min.js' %}"></script>
 <script>
   $(document).ready(function () {
     const video = document.getElementById("predict-media");
 
     Promise.all([
-    faceapi.nets.ssdMobilenetv1.loadFromUri('/static/json'),
+      faceapi.nets.ssdMobilenetv1.loadFromUri('/static/json'),
       faceapi.nets.tinyFaceDetector.loadFromUri("/static/json")
-      
-    ])
+    ]).catch(function(err){
+      console.log("Client face-api loading:", err);
+    });
 
     var detectionTimeout;
     video.addEventListener("playing", () => {
@@ -74,37 +106,36 @@
         canvas.style.left = video.offsetLeft + "px";
         document.body.append(canvas);
       }
-      /* In order to be able to pause the video */
       const displaySize = { width: video.width, height: video.height - 60 };
       faceapi.matchDimensions(canvas, displaySize);
 
       detectionTimeout = setInterval(async () => {
-        const detections = await faceapi.detectAllFaces(video);
-        const resizedDetections = faceapi.resizeResults(detections, displaySize);
-        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.top = video.offsetTop + "px";
-        canvas.style.left = video.offsetLeft + "px";
-        resizedDetections.forEach((result, i) => {
-          console.log(resizedDetections[i].box);
-          var result = '{{output}}';
-          var confidence = '{{confidence}}';
-          var drawOptions = {label: result.concat("  " , confidence , "%")};
-          if (result == 'REAL'){
-            drawOptions["boxColor"] = "#0f0";
-          }
-          else if (result == 'FAKE'){
-            drawOptions["boxColor"] = "#f00";
-          }
-          var box = { x: resizedDetections[i].box.x, y: resizedDetections[i].box.y, height: 100, width: 100 };
-          const drawBox = new faceapi.draw.DrawBox(box, drawOptions);
-          drawBox.draw(canvas);
-        });
-      }, 1);
+        try {
+          const detections = await faceapi.detectAllFaces(video);
+          const resizedDetections = faceapi.resizeResults(detections, displaySize);
+          canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+          canvas.style.top = video.offsetTop + "px";
+          canvas.style.left = video.offsetLeft + "px";
+          resizedDetections.forEach((result, i) => {
+            var res = '{{ output }}';
+            var conf = '{{ confidence }}';
+            var drawOptions = { label: res + " " + conf + "%" };
+            if (res == 'REAL') {
+              drawOptions["boxColor"] = "#059669";
+            } else {
+              drawOptions["boxColor"] = "#dc2626";
+            }
+            var box = { x: resizedDetections[i].box.x, y: resizedDetections[i].box.y, height: 100, width: 100 };
+            const drawBox = new faceapi.draw.DrawBox(box, drawOptions);
+            drawBox.draw(canvas);
+          });
+        } catch(e){}
+      }, 50);
     });
 
     video.addEventListener("paused", () => {
       clearTimeout(detectionTimeout);
     });
-  })
+  });
 </script>
-{%endblock%}
+{% endblock %}

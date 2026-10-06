@@ -23,6 +23,14 @@ DEBUG = True
 # Change and set this to correct IP/Domain
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.ngrok-free.app",
+    "https://*.ngrok.io",
+    "https://*.ngrok-free.dev",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
+
 
 # Application definition
 
@@ -100,6 +108,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'uploaded_images'),
+    os.path.join(PROJECT_DIR, 'uploaded_videos'),
     os.path.join(PROJECT_DIR, 'static'),
     os.path.join(PROJECT_DIR, 'models'),
 ]
