@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection System | AI-Powered Video Analysis</title>
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #00d4ff;
+            --accent2: #0077ff;
+            --text-light: #e6f1ff;
+            --text-muted: #8892b0;
+            --bg-light: #f8fafc;
+            --text-dark: #1a1a2e;
+            --card-bg: rgba(17, 34, 64, 0.7);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight { color: var(--accent); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-light {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .section-light h2, .section-light h3, .section-light h4 {
+            color: var(--text-dark);
+        }
+
+        .section-light p {
+            color: #4a5568;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #050b14 0%, var(--primary) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+            z-index: 1;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+        }
+
+        @keyframes moveGrid {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition);
+        }
+        
+        .section-light .about-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .accuracy-badge {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(150, 201, 61, 0.4);
+        }
+
+        .workflow-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .workflow-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent2), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .workflow-step {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .workflow-step::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--primary);
+            border: 4px solid var(--accent);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .step-content {
+            padding: 1.5rem;
+            background: var(--card-bg);
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .step-content h3 {
+            color: var(--accent);
+        }
+
+        .arch-container {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+        }
+
+        .arch-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .arch-node {
+            background: var(--secondary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent2);
+            font-weight: 600;
+            color: var(--text-light);
+            min-width: 150px;
+        }
+
+        .arch-arrow {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        
+        .section-light .tech-card {
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ml-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--secondary), #0a192f);
+            border-radius: 12px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-mockup {
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .demo-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .upload-area {
+            border: 2px dashed var(--text-muted);
+            border-radius: 8px;
+            padding: 4rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .qr-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .qr-card img {
+            width: 150px;
+            height: 150px;
+            margin: 1rem auto;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background: #050b14;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .workflow-timeline::after { left: 31px; }
+            .workflow-step { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .workflow-step::after { left: 21px; }
+            .left::after, .right::after { left: 21px; }
+            .right { left: 0; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 25, 47, 0.98);
+                padding: 2rem;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 7.1"/><path d="M12 12l9.9 4.9"/></svg>
+                DeepGuard
+            </a>
+            <div class="menu-btn" id="menuBtn">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#workflow">Pipeline</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#ml-details">AI Model</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#developer">Developer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in">
+            <div class="accuracy-badge">🏆 87% Detection Accuracy</div>
+            <h1 class="hero-title">DEEPFAKE DETECTION USING ARTIFICIAL INTELLIGENCE</h1>
+            <p class="hero-subtitle">Fighting AI-Generated Misinformation with Spatio-Temporal Modeling</p>
+            <p class="hero-tagline">DETECT • EXPLAIN • VERIFY</p>
+            <div class="hero-btns">
+                <a href="#demo" class="btn btn-primary">Try Detection Demo</a>
+                <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" class="btn btn-outline">View Source Code</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section-light">
+        <div class="container">
+            <h2 class="fade-in">Understanding the Threat</h2>
+            <div class="about-grid">
+                <div class="fade-in">
+                    <h3 class="highlight">What is a Deepfake?</h3>
+                    <p>Deepfakes are highly realistic, AI-generated synthetic media where a person in an existing image or video is replaced with someone else's likeness. Using advanced neural networks, malicious actors can create videos of people saying or doing things they never did.</p>
+                    <p>Our solution approaches this challenge by recognizing that manipulation introduces subtle spatial anomalies as well as temporal inconsistencies across multiple frames.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>Our Advanced Hybrid Solution</h3>
+                    <p>This project utilizes a state-of-the-art <strong>ResNext50 + LSTM Hybrid</strong> architecture. The CNN backbone extracts deep spatial features per frame, while the LSTM models temporal sequence modeling across frames.</p>
+                    <p>Trained on a massive combined dataset of 23,186 videos from <strong>DFDC, Celeb-DF v2, and FaceForensics++</strong>, our system achieves a rigorously validated <strong>87% classification accuracy</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow">
+        <div class="container">
+            <h2 class="fade-in">How It Works: Spatio-Temporal Pipeline</h2>
+            <div class="workflow-timeline">
+                
+                <div class="workflow-step left fade-in">
+                    <div class="step-content">
+                        <h3>1. Frame Extraction & Filtering</h3>
+                        <p>User uploads a video file. Videos with &lt;100 frames or audio-only manipulations are filtered out. <strong>OpenCV</strong> dynamically extracts exactly <strong>20 frames</strong> for inference sequence analysis.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step right fade-in">
+                    <div class="step-content">
+                        <h3>2. Face Detection</h3>
+                        <p>The <strong>dlib-based face_recognition</strong> library scans extracted frames to accurately locate human faces. (Client-side previews use <em>face-api.js</em>).</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step left fade-in">
+                    <div class="step-content">
+                        <h3>3. Spatial Feature Extraction</h3>
+                        <p>Faces are cropped to 112×112 and passed into the <strong>PyTorch ResNext50</strong> backbone, running through an AdaptiveAvgPool2d to generate a precise 2048-dimensional feature vector per frame.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step right fade-in">
+                    <div class="step-content">
+                        <h3>4. Temporal Modeling (LSTM)</h3>
+                        <p>The extracted sequences of 2048-dim vectors are fed into an <strong>LSTM (Long Short-Term Memory)</strong> network. It evaluates how features change over time to detect temporal jitter and blending flaws.</p>
+                    </div>
+                </div>
+
+                <div class="workflow-step left fade-in">
+                    <div class="step-content">
+                        <h3>5. Classification & Explainability</h3>
+                        <p>The LSTM's final hidden state passes through a Linear(2048, 2) layer yielding a <strong>Softmax 2-Class prediction (Real=1, Fake=0)</strong>. <strong>CAM Heatmaps</strong> (JET colormap) are generated to highlight manipulated regions.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section id="architecture" class="section-light">
+        <div class="container">
+            <h2 class="fade-in">System Architecture</h2>
+            <div class="arch-container fade-in">
+                <p>A robust client-server architecture deployed via <strong>Docker + Gunicorn + Nginx</strong>.</p>
+                <div class="arch-flow">
+                    <div class="arch-node">User Upload<br><small>Video File</small></div>
+                    <div class="arch-arrow">➔</div>
+                    <div class="arch-node">Django Backend<br><small>Web Server</small></div>
+                    <div class="arch-arrow">➔</div>
+                    <div class="arch-node">OpenCV<br><small>Face Extraction</small></div>
+                    <div class="arch-arrow">➔</div>
+                    <div class="arch-node">ResNext50 + LSTM<br><small>Spatio-Temporal Model</small></div>
+                    <div class="arch-arrow">➔</div>
+                    <div class="arch-node">Classification<br><small>Softmax Output</small></div>
+                    <div class="arch-arrow">➔</div>
+                    <div class="arch-node">Result Page<br><small>w/ CAM Heatmap</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section id="tech-stack">
+        <div class="container">
+            <h2 class="fade-in">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card fade-in"><div class="tech-icon">🐍</div><h4>Python</h4><p>Core Backend</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🌐</div><h4>Django</h4><p>Web Framework</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🔥</div><h4>PyTorch</h4><p>Deep Learning</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🎥</div><h4>OpenCV</h4><p>Video Processing</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">👤</div><h4>face_recognition</h4><p>Face Detection</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🧠</div><h4>face-api.js</h4><p>Client Preview</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">📊</div><h4>scikit-learn</h4><p>Model Evaluation</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🐼</div><h4>Pandas</h4><p>Data Management</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">📈</div><h4>Matplotlib</h4><p>Training Curves</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🎨</div><h4>Seaborn</h4><p>Data Visuals</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">🐳</div><h4>Docker</h4><p>Containerization</p></div>
+                <div class="tech-card fade-in"><div class="tech-icon">⚙️</div><h4>Gunicorn/Nginx</h4><p>Deployment</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI/ML Section -->
+    <section id="ml-details" class="section-light">
+        <div class="container">
+            <h2 class="fade-in">Machine Learning Details</h2>
+            <div class="about-grid">
+                <div class="fade-in">
+                    <h3 class="highlight">Model Architecture: ResNext50 + LSTM</h3>
+                    <p>Our hybrid network is optimized for spatio-temporal dynamics. The spatial backbone is initialized with ImageNet weights, extracting 2048-d features. These are passed sequentially to an LSTM.</p>
+                    <p>The network leverages <strong>LeakyReLU</strong> activation, a <strong>Dropout rate of 0.4</strong>, and finishes with a 2-class linear output: <code>nn.Linear(2048, 2)</code>.</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Dataset & Strategy</h4>
+                    <p>Trained dynamically across three major sets: DFDC, Celeb-DF v2, and FaceForensics++ yielding 23,186 total videos. Data is rigorously balanced. Training relied on 10-frame sequences with random temporal jitter for superior generalization.</p>
+                </div>
+                
+                <div class="ml-stats fade-in">
+                    <div class="stat-card"><div class="stat-value">20</div><div class="stat-label">Training Epochs</div></div>
+                    <div class="stat-card"><div class="stat-value">4</div><div class="stat-label">Batch Size</div></div>
+                    <div class="stat-card"><div class="stat-value">Adam</div><div class="stat-label">Optimizer (lr=1e-5)</div></div>
+                    <div class="stat-card"><div class="stat-value">CrossEntropy</div><div class="stat-label">Loss Function</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results/Output Section -->
+    <section id="results">
+        <div class="container">
+            <h2 class="fade-in">Validated Model Results</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;" class="fade-in">
+                <div class="accuracy-badge" style="font-size: 1.5rem; margin-bottom: 2rem;">🏆 87% Final Model Accuracy</div>
+                
+                <p>Through comprehensive evaluation using scikit-learn metrics, confusion matrices, and Seaborn heatmaps, the final checkpoint (<code>model_87_acc_20_frames_final_data.pt</code>) demonstrates robust resilience against deepfake variations.</p>
+                
+                <div style="background: var(--card-bg); border-radius: 10px; padding: 2rem; margin-top: 2rem; border-left: 5px solid var(--accent); text-align: left;">
+                    <h3 style="color: var(--accent);">Inference Output Format</h3>
+                    <ul style="list-style: none; margin-top: 1rem; color: #e6f1ff; font-family: monospace; font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>Classification:</strong> 2-Class Network (Class 1 = REAL, Class 0 = FAKE)</li>
+                        <li><strong>Confidence:</strong> Softmax Probability Estimation (%)</li>
+                        <li><strong>Explainability:</strong> Class Activation Mapping (CAM) overlays generating a JET colormap directly onto detected facial landmarks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Mockup Section -->
+    <section id="demo" class="section-light">
+        <div class="container">
+            <h2 class="fade-in">Live Demo Interface</h2>
+            <div class="demo-mockup fade-in">
+                <div class="demo-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent); margin-bottom: 1rem;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h3>Drag & Drop Video Here</h3>
+                    <p>Format: MP4, AVI, MKV (Min. 100 frames)</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Browse Files</button>
+                </div>
+
+                <div id="processingArea" style="display: none; text-align: center; padding: 3rem 0;">
+                    <div style="width: 50px; height: 50px; border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem auto;"></div>
+                    <h3>Processing Video...</h3>
+                    <p>Extracting frames → ResNext50 + LSTM Modeling → Generating CAM Heatmaps</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" class="btn btn-outline">Visit Live Deployment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+
+    <!-- Developer Profile -->
+    <section id="developer">
+        <div class="container">
+            <h2 class="fade-in">Developer Profile</h2>
+            <div class="profile-card fade-in">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent2), var(--accent)); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    👨‍💻
+                </div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">PATEL SHUBH MAHESHKUMAR</h3>
+                <p style="color: var(--accent); font-weight: bold; letter-spacing: 1px;">Project Developer</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/gjcompshubh123/" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">LinkedIn</a>
+                    <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">GitHub</a>
+                    <a href="https://shubh-patel-portfolio.vercel.app/" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Codes Section -->
+    <section id="qr-codes" class="section-light">
+        <div class="container">
+            <h2 class="fade-in">CONNECT WITH THE DEVELOPER</h2>
+            <div class="qr-grid">
+                
+                <div class="qr-card fade-in">
+                    <h4>LinkedIn</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fgjcompshubh123%2F" alt="LinkedIn QR">
+                    <a href="https://www.linkedin.com/in/gjcompshubh123/" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+                <div class="qr-card fade-in">
+                    <h4>GitHub</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgithub.com%2FShubh-Patel-07%2FDeepfake_detection_" alt="GitHub QR">
+                    <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+                <div class="qr-card fade-in">
+                    <h4>Portfolio</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fshubh-patel-portfolio.vercel.app%2F" alt="Portfolio QR">
+                    <a href="https://shubh-patel-portfolio.vercel.app/" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+                <div class="qr-card fade-in">
+                    <h4>Instagram</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.instagram.com%2Fsmp.officials%2F" alt="Instagram QR">
+                    <a href="https://www.instagram.com/smp.officials/" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+                <div class="qr-card fade-in">
+                    <h4>Live Demo (Project)</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgithub.com%2FShubh-Patel-07%2FDeepfake_detection_" alt="Live Demo QR">
+                    <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+                <div class="qr-card fade-in">
+                    <h4>Source Code</h4>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgithub.com%2FShubh-Patel-07%2FDeepfake_detection_" alt="Source Code QR">
+                    <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" style="color: var(--accent2); display:block; margin-top:0.5rem;">Visit Link</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Source Code Section -->
+    <section id="source-code" style="text-align: center; padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container fade-in">
+            <h2>Source Code Access</h2>
+            <p style="margin-bottom: 2rem;">The complete source code including Django backend, ResNext50+LSTM models, and Docker configuration is available.</p>
+            <a href="https://github.com/Shubh-Patel-07/Deepfake_detection_" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 3rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                VIEW SOURCE CODE
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3 style="color: var(--accent);">Deepfake Detection System</h3>
+            <p>K. D. Polytechnic, Patan</p>
+            <p>Department of Computer Engineering</p>
+            <p>Year 2024-2025</p>
+            <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                &copy; 2024 Patel Shubh Maheshkumar. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Demo Mockup Interaction
+        const uploadArea = document.getElementById('uploadArea');
+        const processingArea = document.getElementById('processingArea');
+
+        uploadArea.addEventListener('click', () => {
+            uploadArea.style.display = 'none';
+            processingArea.style.display = 'block';
+            
+            // Mock processing time
+            setTimeout(() => {
+                processingArea.innerHTML = `
+                    <div style="color: #ff5f56; margin-bottom: 1rem;">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    </div>
+                    <h3 style="color: #ff5f56; font-size: 2rem;">FAKE DETECTED (Class 0)</h3>
+                    <p style="font-size: 1.2rem; margin-top: 0.5rem;">Softmax Confidence: <strong>99.3%</strong></p>
+                    <p style="font-size: 1rem; color: #8892b0; margin-top: 0.5rem; background: #0a192f; padding: 10px; border-radius: 5px; display: inline-block;">Visualizing CAM Heatmap Overlay (JET)...</p>
+                    <br>
+                    <button class="btn btn-outline" style="margin-top: 1.5rem;" onclick="location.reload()">Test Another Video</button>
+                `;
+            }, 2500);
+        });
+    </script>
+</body>
+</html>
