@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection Poster - 27x40 Inch Portrait (Winning Edition)</title>
+    <!--
+    =============================================================================
+    K. D. POLYTECHNIC, PATAN - DEPARTMENT OF COMPUTER ENGINEERING
+    ACADEMIC / TECHNICAL POSTER PRESENTATION COMPETITION (WINNING EDITION)
+    DIMENSIONS: 27 x 40 INCHES (PORTRAIT)
+    STRICT MARGINS: TOP & BOTTOM: 2.0 INCHES | LEFT & RIGHT: 1.5 INCHES
+    COLOR PALETTE (MAX 3 COLORS):
+      1. Primary Deep Navy: #0a192f
+      2. Secondary Cyan Accent: #00d4ff
+      3. Crisp Background & Light Panels: #f8fafc / #ffffff
+    =============================================================================
+    -->
+    <style>
+        @page {
+            size: 27in 40in;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 27in;
+            height: 40in;
+            margin: 0 auto;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #f8fafc;
+            color: #0a192f;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Strict Margins: Left/Right 1.5 in, Top/Bottom 2.0 in */
+        .poster-container {
+            width: 27in;
+            height: 40in;
+            padding: 2.0in 1.5in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ================= TOP BANNER ================= */
+        .banner {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 0.5in 0.6in 0.42in;
+            border-bottom: 0.16in solid #00d4ff;
+            border-radius: 0.22in;
+            box-shadow: 0 12px 32px rgba(10, 25, 47, 0.25);
+            margin-bottom: 0.32in;
+        }
+
+        .college-info {
+            font-size: 34pt;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            margin-bottom: 0.08in;
+        }
+
+        .department {
+            font-size: 28pt;
+            font-weight: 600;
+            color: #00d4ff;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.22in;
+        }
+
+        .project-title {
+            font-size: 64pt;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.14;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.14in;
+            text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+        }
+
+        .project-subtitle {
+            font-size: 30pt;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 0.24in;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 26pt;
+            font-weight: 700;
+            color: #e2e8f0;
+            padding: 0.12in 0.8in 0;
+            border-top: 2px solid rgba(0, 212, 255, 0.35);
+        }
+
+        /* ================= 3-COLUMN MAIN BODY ================= */
+        .poster-body {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr 1fr;
+            gap: 0.35in;
+            flex: 1;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.28in;
+        }
+
+        /* Card / Section */
+        .card {
+            background: #ffffff;
+            border-radius: 0.18in;
+            padding: 0.3in 0.35in;
+            box-shadow: 0 6px 20px rgba(10, 25, 47, 0.06);
+            border-top: 8px solid #00d4ff;
+            border-left: 1px solid rgba(10, 25, 47, 0.08);
+            border-right: 1px solid rgba(10, 25, 47, 0.08);
+            border-bottom: 1px solid rgba(10, 25, 47, 0.08);
+        }
+
+        h2 {
+            font-size: 38pt;
+            font-weight: 800;
+            color: #0a192f;
+            margin-bottom: 0.18in;
+            border-bottom: 5px solid #00d4ff;
+            padding-bottom: 0.06in;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+
+        p {
+            font-size: 22.5pt;
+            line-height: 1.42;
+            color: #1e293b;
+            margin-bottom: 0.12in;
+        }
+
+        ul, ol {
+            padding-left: 0.44in;
+            margin-bottom: 0.12in;
+        }
+
+        li {
+            font-size: 22pt;
+            line-height: 1.4;
+            color: #1e293b;
+            margin-bottom: 0.08in;
+        }
+
+        b, strong {
+            color: #0a192f;
+            font-weight: 800;
+        }
+
+        /* Scientific Figure Box */
+        .fig-box {
+            background: #f8fafc;
+            border: 2px solid #00d4ff;
+            border-radius: 0.14in;
+            padding: 0.12in;
+            text-align: center;
+            margin: 0.12in 0;
+            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.05);
+        }
+
+        .fig-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.08in;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .fig-caption {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #0a192f;
+            margin-top: 0.08in;
+            line-height: 1.3;
+        }
+
+        /* Architecture Diagram Flow */
+        .arch-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.09in;
+            margin-top: 0.08in;
+            margin-bottom: 0.08in;
+        }
+
+        .arch-box {
+            background-color: #0a192f;
+            color: #ffffff;
+            border: 3.5px solid #00d4ff;
+            border-radius: 0.12in;
+            padding: 0.15in 0.3in;
+            text-align: center;
+            font-size: 24pt;
+            font-weight: 800;
+            width: 94%;
+            box-shadow: 0 5px 12px rgba(10, 25, 47, 0.14);
+        }
+
+        .arch-box.highlight {
+            background: #00d4ff;
+            color: #0a192f;
+            border: 3.5px solid #0a192f;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.35);
+        }
+
+        .arch-sub {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-top: 0.03in;
+        }
+
+        .arch-box.highlight .arch-sub {
+            color: #0a192f;
+            font-weight: 800;
+        }
+
+        .flow-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flow-line {
+            width: 0.05in;
+            height: 0.16in;
+            background-color: #00d4ff;
+        }
+
+        .flow-head {
+            width: 0;
+            height: 0;
+            border-left: 0.12in solid transparent;
+            border-right: 0.12in solid transparent;
+            border-top: 0.15in solid #00d4ff;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20pt;
+            margin-top: 0.12in;
+        }
+
+        th, td {
+            border: 2px solid #0a192f;
+            padding: 0.1in 0.14in;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0a192f;
+            color: #00d4ff;
+            font-weight: 800;
+            font-size: 21pt;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        /* Stat Callout */
+        .stat-container {
+            display: flex;
+            gap: 0.18in;
+            margin: 0.12in 0;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: #0a192f;
+            color: #00d4ff;
+            text-align: center;
+            padding: 0.18in;
+            border-radius: 0.12in;
+            border: 3px solid #00d4ff;
+            box-shadow: 0 6px 14px rgba(10, 25, 47, 0.18);
+        }
+
+        .stat-number {
+            font-size: 60pt;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.04in;
+        }
+
+        .stat-label {
+            font-size: 20pt;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+        }
+
+        /* QR Section */
+        .qr-section-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.2in;
+            margin-top: 0.12in;
+        }
+
+        .qr-card {
+            background: #f8fafc;
+            border: 2.5px solid #0a192f;
+            border-radius: 0.12in;
+            padding: 0.14in;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-img {
+            width: 1.65in;
+            height: 1.65in;
+            border: 2px solid #00d4ff;
+            border-radius: 0.08in;
+            background: #ffffff;
+            padding: 0.05in;
+            margin-bottom: 0.08in;
+        }
+
+        .qr-title {
+            font-size: 19pt;
+            font-weight: 800;
+            color: #0a192f;
+            margin-bottom: 0.03in;
+        }
+
+        .qr-desc {
+            font-size: 15pt;
+            color: #475569;
+            word-break: break-all;
+            line-height: 1.22;
+        }
+
+        /* Bottom Section */
+        .bottom-bar {
+            margin-top: 0.28in;
+            display: grid;
+            grid-template-columns: 1.9fr 1.1fr;
+            gap: 0.35in;
+        }
+
+        .references-list {
+            font-size: 16.5pt;
+            padding-left: 0.32in;
+        }
+
+        .references-list li {
+            font-size: 16.5pt;
+            line-height: 1.32;
+            margin-bottom: 0.05in;
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        
+        <!-- ================= TOP BANNER ================= -->
+        <header class="banner">
+            <div class="college-info">K. D. POLYTECHNIC, PATAN</div>
+            <div class="department">DEPARTMENT OF COMPUTER ENGINEERING</div>
+            <h1 class="project-title">DEEPFAKE DETECTION USING ARTIFICIAL INTELLIGENCE</h1>
+            <div class="project-subtitle">A Spatio-Temporal Hybrid Deep Learning Approach (ResNeXt50 + LSTM)</div>
+            <div class="meta-info">
+                <span>GUIDE: __________________________________</span>
+                <span>ENROLLMENT NO: __________________________________</span>
+            </div>
+        </header>
+
+        <!-- ================= MAIN 3-COLUMN BODY ================= -->
+        <main class="poster-body">
+
+            <!-- ================= COLUMN 1: LEFT ================= -->
+            <section class="column">
+                
+                <article class="card">
+                    <h2>1. INTRODUCTION & PROBLEM</h2>
+                    <p>Deepfakes use Generative Adversarial Networks (GANs) and autoencoders to replace human faces in videos with high sensory realism. Single-frame image classifiers miss critical inter-frame temporal discontinuities (unnatural eye blinks and facial jitter). This project engineers a complete <b>Spatio-Temporal Hybrid Framework</b> to accurately verify video authenticity.</p>
+                </article>
+
+                <article class="card">
+                    <h2>2. VISUAL EXPERIMENTAL EVIDENCE</h2>
+                    <p>Real-world testing comparison between authentic and deepfake video crops:</p>
+                    <div class="fig-box">
+                        <img src="fig_real_vs_fake_cam.png" alt="Real vs Fake Face with CAM Heatmap" class="fig-img">
+                        <div class="fig-caption">Figure 1: Authentic Face (68 Landmarks) vs Manipulated Deepfake (CAM Boundary Artifacts)</div>
+                    </div>
+                    <p><b>Observation:</b> Manipulated frames exhibit high boundary heat concentration, revealing synthetic blending artifacts undetectable by the naked human eye.</p>
+                </article>
+
+                <article class="card">
+                    <h2>3. CORE OBJECTIVES</h2>
+                    <ul>
+                        <li><b>Spatio-Temporal Fusion:</b> Integrate ResNeXt50 with LSTM recurrent units to catch micro-flicker anomalies.</li>
+                        <li><b>Explainability (XAI):</b> Generate Class Activation Maps (CAM) identifying tampered facial zones.</li>
+                        <li><b>Web Production:</b> Deploy a responsive Django platform with real-time client landmark tracking.</li>
+                    </ul>
+                </article>
+
+            </section>
+
+            <!-- ================= COLUMN 2: CENTER (CORE ARCHITECTURE) ================= -->
+            <section class="column">
+                
+                <article class="card" style="border-top: 10px solid #00d4ff; box-shadow: 0 10px 28px rgba(10, 25, 47, 0.12);">
+                    <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 40pt; margin-bottom: 0.14in;">4. SYSTEM ARCHITECTURE</h2>
+                    
+                    <div class="arch-diagram">
+                        
+                        <div class="arch-box">
+                            USER WEB INTERFACE
+                            <div class="arch-sub">Django MVT • Bootstrap 5 • face-api.js Tracking</div>
+                        </div>
+
+                        <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
+
+                        <div class="arch-box">
+                            UNIFORM FRAME EXTRACTION
+                            <div class="arch-sub">OpenCV Engine • 20 Frames Uniform Sequence Sampling</div>
+                        </div>
+
+                        <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
+
+                        <div class="arch-box">
+                            FACIAL LOCALIZATION & CROPPING
+                            <div class="arch-sub">dlib / face_recognition • 68 Landmarks • 112×112 px Normalization</div>
+                        </div>
+
+                        <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
+
+                        <div class="arch-box">
+                            ResNeXt-50 (32×4d) SPATIAL BACKBONE
+                            <div class="arch-sub">Grouped Convolutions • ImageNet Transfer Weights (2048-dim vectors)</div>
+                        </div>
+
+                        <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
+
+                        <div class="arch-box">
+                            LSTM TEMPORAL SEQUENCE MODELING
+                            <div class="arch-sub">Sequence Horizon Analysis Across 20-Frames (Tracks Flickering)</div>
+                        </div>
+
+                        <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
+
+                        <div class="arch-box highlight">
+                            PREDICTION VERDICT & EXPLAINABILITY
+                            <div class="arch-sub">REAL vs. FAKE • Confidence % • CAM Visual Heatmap</div>
+                        </div>
+
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h2>5. TEMPORAL STRIDE SEQUENCE</h2>
+                    <div class="fig-box">
+                        <img src="fig_temporal_sequence.png" alt="20-Frame Temporal Sequence to LSTM" class="fig-img">
+                        <div class="fig-caption">Figure 2: 20-Frame Temporal Feature Vectors Processed Through Recurrent LSTM Network</div>
+                    </div>
+                    <p style="margin-bottom: 0;"><b>Temporal Advantage:</b> LSTM resolves temporal drift, eliminating false positives caused by single-frame shadows or lighting transitions.</p>
+                </article>
+
+            </section>
+
+            <!-- ================= COLUMN 3: RIGHT ================= -->
+            <section class="column">
+                
+                <article class="card">
+                    <h2>6. BENCHMARK EVALUATION</h2>
+                    <div class="stat-container">
+                        <div class="stat-box">
+                            <div class="stat-number">87%</div>
+                            <div class="stat-label">ACCURACY</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">23K+</div>
+                            <div class="stat-label">TRAIN VIDEOS</div>
+                        </div>
+                    </div>
+                    <div class="fig-box" style="margin: 0.1in 0;">
+                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" class="fig-img" style="max-height: 2.5in;">
+                        <div class="fig-caption">Figure 3: Cross-Dataset Confusion Matrix (DFDC + Celeb-DF + FF++)</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h2>7. HYPERPARAMETERS</h2>
+                    <table>
+                        <thead>
+                            <tr><th>Parameter</th><th>Engineering Value</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Architecture</td><td><b>ResNeXt-50 + LSTM</b></td></tr>
+                            <tr><td>Frame Horizon</td><td>20 Frames / Video</td></tr>
+                            <tr><td>Resolution</td><td>112 × 112 Pixels (RGB)</td></tr>
+                            <tr><td>Optimization</td><td>Adam (lr=1e-5, decay=1e-5)</td></tr>
+                            <tr><td>Inference Latency</td><td>~1.85 Seconds / Video (CUDA)</td></tr>
+                        </tbody>
+                    </table>
+                </article>
+
+                <article class="card">
+                    <h2>8. LIVE DEMO & SHOWCASE QR</h2>
+                    <p style="margin-bottom: 0.08in;">Judges can scan below to verify live AI inference directly from their mobile devices:</p>
+                    <div class="qr-section-container">
+                        <div class="qr-card">
+                            <img src="qr_showcase_vercel.png" alt="Showcase QR" class="qr-img">
+                            <div class="qr-title">Showcase Portal</div>
+                            <div class="qr-desc">deepfakedetection-cyan.vercel.app</div>
+                        </div>
+                        <div class="qr-card">
+                            <img src="qr_live_demo_ngrok.png" alt="Live Demo QR" class="qr-img">
+                            <div class="qr-title">Live AI Engine</div>
+                            <div class="qr-desc">petite-discover-precut.ngrok-free.dev</div>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+        </main>
+
+        <!-- ================= BOTTOM SECTION ================= -->
+        <footer class="bottom-bar">
+            
+            <div class="card" style="margin-bottom: 0;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.32in;">
+                    <div>
+                        <h2>9. APPLICATIONS</h2>
+                        <ul>
+                            <li><b>Social Media Integrity:</b> Automated flagging of malicious viral synthetic clips.</li>
+                            <li><b>Digital KYC & Banking:</b> Spoof prevention in remote customer identity authentication.</li>
+                            <li><b>Cyber Forensics:</b> Admissible digital evidence analysis for legal courts.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>10. CONCLUSION & FUTURE SCOPE</h2>
+                        <p><b>Conclusion:</b> Spatial-temporal hybrid modeling delivers 87% accuracy, solving single-frame classification limitations.</p>
+                        <p><b>Future Scope:</b> Real-time video stream inspection (RTSP), audio-visual multimodal sync, and edge deployment via TensorRT.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 0;">
+                <h2>11. REFERENCES</h2>
+                <ol class="references-list">
+                    <li>Facebook AI, "The Deepfake Detection Challenge (DFDC) Dataset", arXiv:2006.07397.</li>
+                    <li>S. Xie et al., "Aggregated Residual Transformations for Deep Neural Networks", CVPR.</li>
+                    <li>S. Hochreiter & J. Schmidhuber, "Long Short-Term Memory", Neural Computation.</li>
+                    <li>A. Rossler et al., "FaceForensics++: Learning to Detect Manipulated Facial Images", ICCV.</li>
+                    <li>Y. Li et al., "Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics", CVPR.</li>
+                </ol>
+            </div>
+
+        </footer>
+
+    </div>
+</body>
+</html>
