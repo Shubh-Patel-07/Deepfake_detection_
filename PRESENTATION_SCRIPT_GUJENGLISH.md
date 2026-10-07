@@ -7,7 +7,7 @@
 
 ## 💡 PRESENTER'S GOLDEN RULES (સૌથી પહેલા આ 3 વાતો યાદ રાખો)
 1. **મુસ્કુરાઓ અને કોન્ફિડન્સ રાખો:** જજીસ સામે હસીને જોવાનું છે. પોસ્ટર તરફ પીઠ (Back) નથી કરવાની.
-2. **પોસ્ટરના ફોટા તરફ આંગળી ચીંધો:** જ્યારે તમે "Figure 1", "Architecture", કે "QR Code" બોલો, ત્યારે હાથ કે પેનથી પોસ્ટર પર પોઈન્ટ કરો.
+2. **પોસ્ટરના ફોટા તરફ આંગળી ચીંધો:** જ્યારે તમે "Figure 1", "Figure 2", "Architecture", કે "Showcase QR Code" બોલો, ત્યારે હાથ કે પેનથી પોસ્ટર પર પોઈન્ટ કરો.
 3. **સરળ ભાષા (GujEnglish):** ગુજરાતીમાં સહજતાથી વાત કરો અને ટેકનિકલ શબ્દો અંગ્રેજીમાં બોલો.
 
 ---
@@ -64,13 +64,12 @@
 ---
 
 ### 🟢 STEP 4: LIVE DEMO & QR CODES (સમય: 3:30 – 4:30)
-**[ક્રિયા: પોસ્ટર પર જમણી બાજુ રહેલા બે QR Codes તરફ આંગળી ચીંધો અથવા મોબાઈલ બતાવો]**
+**[ક્રિયા: પોસ્ટર પર રહેલા Showcase QR Code તરફ આંગળી ચીંધો અને મોબાઈલ બતાવો]**
 
 > "Judges, amaro project khali theoretical nathi, production-ready live deploy karelo che!  
-> Posterna Section 8 ma **be live QR codes** che:  
 > 
-> - **Pehlo QR Code:** Amari **Showcase Website** no che (Hosted on Vercel), jya badha blueprints ane details interactive che.  
-> - **Bijo QR Code:** Amara **Live Ngrok AI Detection Server** no che! Tame potana mobile thi direct video upload kari ne live AI prediction check kari shako cho!  
+> - **Posterna Section 8 ma amari Showcase Website no official QR Code che (Hosted 24x7 on Vercel):** Tame potana mobile thi scan kari ne complete system architecture, high-resolution forensic heatmaps, ane live video preview interactively explore kari shako cho!  
+> - **Sathe amari Script Guide PDF ma Live AI Detection Engine (Ngrok) no QR Code pan che:** Jethi tame judge samaksha direct live video upload kari ne live AI classification run kari shako cho!  
 > 
 > Furthermore, amari web app ma client-side **real-time 68 facial landmark tracking** pan chale che, je video playback sathe face par live landmarks render kare che!"
 
