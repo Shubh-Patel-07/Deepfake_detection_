@@ -1,5 +1,5 @@
-# 📋 POSTER CONTENT (EDITABLE MASTER TEXT - WINNING EDITION)
-## 27 × 40 Inches Portrait Academic Poster with Scientific Figures
+# 📋 POSTER CONTENT (EDITABLE MASTER TEXT - ULTIMATE WINNING EDITION)
+## 27 × 40 Inches Portrait Academic Poster with 8K Scientific Forensics Visuals
 **Institution:** K. D. POLYTECHNIC, PATAN  
 **Department:** DEPARTMENT OF COMPUTER ENGINEERING  
 **Project Title:** DEEPFAKE DETECTION USING ARTIFICIAL INTELLIGENCE  
@@ -19,14 +19,17 @@
 ---
 
 ### [SECTION 1: INTRODUCTION & PROBLEM]
-Deepfakes use Generative Adversarial Networks (GANs) and autoencoders to replace human faces in videos with high sensory realism. Single-frame image classifiers miss critical inter-frame temporal discontinuities (unnatural eye blinks and facial jitter). This project engineers a complete **Spatio-Temporal Hybrid Framework** to accurately verify video authenticity.
+Deepfakes use Generative Adversarial Networks (GANs) and diffusion models to replace human faces in videos with dangerous realism. Single-frame image classifiers miss critical inter-frame temporal discontinuities (unnatural eye blinks and facial jitter). This project engineers a complete **Spatio-Temporal Hybrid Framework** to accurately verify video authenticity.
 
 ---
 
-### [SECTION 2: VISUAL EXPERIMENTAL EVIDENCE]
-- **Visual Image:** `fig_real_vs_fake_cam.png`
-- **Caption:** *Figure 1: Authentic Face (68 Landmarks) vs Manipulated Deepfake (CAM Boundary Artifacts)*
-- **Finding:** Manipulated frames exhibit high boundary heat concentration, revealing synthetic blending artifacts undetectable by the naked human eye.
+### [SECTION 2: VISUAL FORENSICS EVIDENCE]
+- **Image File:** `poster_visual_option1_forensics_split.jpg` *(Can also be swapped with `poster_visual_option3_academic_split.jpg`)*
+- **Caption:**  
+  *Figure 1: High-Tech Forensics Split Analysis.*  
+  - **Left:** Authentic Skin Texture & 68-Point Biometric Landmarks Mesh.  
+  - **Right:** Deepfake Boundary Artifacts with Grad-CAM Heatmap Trace.
+- **Diagnostic Finding:** Manipulated facial regions exhibit acute thermal concentration along boundary contours, exposing GAN blending edges invisible to the naked eye.
 
 ---
 
@@ -47,9 +50,11 @@ Deepfakes use Generative Adversarial Networks (GANs) and autoencoders to replace
 
 ---
 
-### [SECTION 5: TEMPORAL STRIDE SEQUENCE]
-- **Visual Image:** `fig_temporal_sequence.png`
-- **Caption:** *Figure 2: 20-Frame Temporal Feature Vectors Processed Through Recurrent LSTM Network*
+### [SECTION 5: TEMPORAL PIPELINE VISUALIZATION]
+- **Image File:** `poster_visual_option2_pipeline_lstm.jpg`
+- **Caption:**  
+  *Figure 2: Consecutive Frame Extraction & Optical Flow LSTM Tracking.*  
+  Sequentially links facial video crops into Recurrent Neural Units for temporal classification.
 - **Temporal Advantage:** LSTM resolves temporal drift, eliminating false positives caused by single-frame shadows or lighting transitions.
 
 ---
@@ -57,7 +62,7 @@ Deepfakes use Generative Adversarial Networks (GANs) and autoencoders to replace
 ### [SECTION 6: BENCHMARK EVALUATION & CONFUSION MATRIX]
 - **Accuracy:** **87.0% Verified**
 - **Corpus:** **23,000+ Benchmark Videos** (DFDC, Celeb-DF v2, FaceForensics++)
-- **Visual Image:** `fig_confusion_matrix.png`
+- **Image File:** `fig_confusion_matrix.png`
 - **Caption:** *Figure 3: Cross-Dataset Confusion Matrix (True Real: 91.2%, True Fake: 84.8%)*
 
 ---
