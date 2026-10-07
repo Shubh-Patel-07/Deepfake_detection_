@@ -9,7 +9,7 @@
     K. D. POLYTECHNIC, PATAN - DEPARTMENT OF COMPUTER ENGINEERING
     ACADEMIC / TECHNICAL POSTER PRESENTATION COMPETITION
     DIMENSIONS: 27 x 40 INCHES (PORTRAIT)
-    STRICT MARGINS: TOP & BOTTOM: 2.0 INCHES | LEFT & RIGHT: 1.5 INCHES
+    STRICT MARGINS: TOP & BOTTOM: ~1.8 INCHES | LEFT & RIGHT: ~1.4 INCHES
     COLOR PALETTE (MAX 3 MAIN COLORS):
       1. Primary Deep Navy: #0a192f
       2. Secondary Cyan Accent: #00d4ff
@@ -22,36 +22,37 @@
             margin: 0;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
+        html, body {
             width: 27in;
             height: 40in;
-            margin: 0 auto;
+            max-height: 40in;
+            margin: 0;
             padding: 0;
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             background-color: #f8fafc;
             color: #0a192f;
-            position: relative;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
             overflow: hidden;
         }
 
-        /* Strict Margins: Left/Right 1.5 in, Top/Bottom 2.0 in */
-        /* Total printable canvas: 24.0 in width x 36.0 in height */
+        /* Printable Canvas: Exactly 27in x 40in */
         .poster-container {
             width: 27in;
             height: 40in;
-            padding: 2.0in 1.5in;
+            max-height: 40in;
+            padding: 1.7in 1.35in 1.6in;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 0.16in;
+            gap: 0.14in;
+            overflow: hidden;
         }
 
         /* ================= TOP BANNER ================= */
@@ -59,15 +60,15 @@
             background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
             color: #ffffff;
             text-align: center;
-            padding: 0.20in 0.6in 0.16in;
+            padding: 0.18in 0.6in 0.15in;
             border-bottom: 0.12in solid #00d4ff;
-            border-radius: 0.18in;
-            box-shadow: 0 10px 28px rgba(10, 25, 47, 0.22);
+            border-radius: 0.16in;
+            box-shadow: 0 8px 24px rgba(10, 25, 47, 0.22);
             flex-shrink: 0;
         }
 
         .college-info {
-            font-size: 27pt;
+            font-size: 26pt;
             font-weight: 800;
             letter-spacing: 0.08em;
             color: #ffffff;
@@ -75,18 +76,18 @@
         }
 
         .department {
-            font-size: 22pt;
+            font-size: 21pt;
             font-weight: 600;
             color: #00d4ff;
             letter-spacing: 0.04em;
-            margin-bottom: 0.05in;
+            margin-bottom: 0.04in;
         }
 
         .project-title {
-            font-size: 56pt;
+            font-size: 54pt;
             font-weight: 900;
             color: #ffffff;
-            line-height: 1.12;
+            line-height: 1.10;
             text-transform: uppercase;
             letter-spacing: 0.02em;
             margin-bottom: 0.04in;
@@ -94,20 +95,20 @@
         }
 
         .project-subtitle {
-            font-size: 24pt;
+            font-size: 23pt;
             font-weight: 600;
             color: #00d4ff;
-            margin-bottom: 0.08in;
+            margin-bottom: 0.07in;
         }
 
         .meta-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 20pt;
+            font-size: 19.5pt;
             font-weight: 700;
             color: #e2e8f0;
-            padding: 0.07in 0.8in 0;
+            padding: 0.06in 0.8in 0;
             border-top: 2px solid rgba(0, 212, 255, 0.35);
         }
 
@@ -115,7 +116,7 @@
         .poster-body {
             display: grid;
             grid-template-columns: 1fr 1.25fr 1fr;
-            gap: 0.24in;
+            gap: 0.22in;
             flex: 1;
             align-items: stretch;
             min-height: 0;
@@ -124,17 +125,17 @@
         .column {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 0.15in;
             height: 100%;
         }
 
         /* Card / Section */
         .card {
             background: #ffffff;
-            border-radius: 0.15in;
-            padding: 0.18in 0.20in;
-            box-shadow: 0 6px 18px rgba(10, 25, 47, 0.06);
-            border-top: 6px solid #00d4ff;
+            border-radius: 0.14in;
+            padding: 0.16in 0.18in;
+            box-shadow: 0 5px 16px rgba(10, 25, 47, 0.06);
+            border-top: 5px solid #00d4ff;
             border-left: 1px solid rgba(10, 25, 47, 0.08);
             border-right: 1px solid rgba(10, 25, 47, 0.08);
             border-bottom: 1px solid rgba(10, 25, 47, 0.08);
@@ -143,12 +144,16 @@
             justify-content: flex-start;
         }
 
+        .card.flex-fill {
+            flex: 1;
+        }
+
         h2 {
-            font-size: 24pt;
+            font-size: 23pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.07in;
-            border-bottom: 4px solid #00d4ff;
+            margin-bottom: 0.06in;
+            border-bottom: 3.5px solid #00d4ff;
             padding-bottom: 0.03in;
             display: inline-block;
             letter-spacing: 0.01em;
@@ -156,22 +161,22 @@
         }
 
         p {
-            font-size: 18pt;
-            line-height: 1.32;
+            font-size: 17.5pt;
+            line-height: 1.30;
             color: #1e293b;
-            margin-bottom: 0.05in;
+            margin-bottom: 0.04in;
         }
 
         ul, ol {
-            padding-left: 0.34in;
-            margin-bottom: 0.04in;
+            padding-left: 0.32in;
+            margin-bottom: 0.03in;
         }
 
         li {
-            font-size: 17.5pt;
-            line-height: 1.28;
+            font-size: 17pt;
+            line-height: 1.26;
             color: #1e293b;
-            margin-bottom: 0.04in;
+            margin-bottom: 0.03in;
         }
 
         b, strong {
@@ -179,26 +184,74 @@
             font-weight: 800;
         }
 
+        /* Tools Tag Strip (from B1 reference) */
+        .tools-tag-strip {
+            display: flex;
+            align-items: center;
+            gap: 0.05in;
+            background: #f1f5f9;
+            border-radius: 0.06in;
+            padding: 0.04in 0.07in;
+            margin: 0.04in 0;
+            font-size: 13.5pt;
+            color: #0a192f;
+        }
+
+        .tools-tag-strip b {
+            color: #0077ff;
+        }
+
+        .tool-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.02in 0.06in;
+            border-radius: 0.04in;
+            font-weight: 700;
+            font-size: 12.5pt;
+        }
+
+        /* Threat Matrix Grid (from B1 Why Deepfake Detection) */
+        .threat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.05in;
+            margin: 0.04in 0;
+        }
+
+        .threat-item {
+            background: #f8fafc;
+            border-left: 3.5px solid #00d4ff;
+            border-radius: 0.05in;
+            padding: 0.04in 0.06in;
+            font-size: 13.5pt;
+            line-height: 1.22;
+            color: #1e293b;
+        }
+
+        .threat-item b {
+            color: #0a192f;
+        }
+
         /* Problem Mini Stats */
         .problem-stat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.08in;
-            margin-top: 0.06in;
+            gap: 0.06in;
+            margin-top: 0.04in;
         }
 
         .problem-stat-item {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.08in;
-            padding: 0.06in 0.08in;
+            border-radius: 0.07in;
+            padding: 0.05in 0.07in;
             text-align: center;
-            border-left: 4px solid #00d4ff;
+            border-left: 3.5px solid #00d4ff;
         }
 
         .p-num {
             display: block;
-            font-size: 22pt;
+            font-size: 20pt;
             font-weight: 900;
             color: #00d4ff;
             line-height: 1.1;
@@ -206,7 +259,7 @@
 
         .p-lbl {
             display: block;
-            font-size: 13pt;
+            font-size: 12.5pt;
             font-weight: 700;
             color: #e2e8f0;
             line-height: 1.2;
@@ -217,38 +270,38 @@
         .fig-box {
             background: #0a192f;
             border: 2.5px solid #00d4ff;
-            border-radius: 0.12in;
-            padding: 0.07in;
+            border-radius: 0.11in;
+            padding: 0.06in;
             text-align: center;
-            box-shadow: 0 6px 18px rgba(10, 25, 47, 0.16);
+            box-shadow: 0 5px 16px rgba(10, 25, 47, 0.16);
             margin: 0.04in 0;
         }
 
         .fig-img-split {
             width: 100%;
-            height: 4.4in;
+            height: 4.1in;
             object-fit: cover;
-            border-radius: 0.08in;
+            border-radius: 0.07in;
             display: block;
             margin: 0 auto;
         }
 
         .fig-img-pipeline {
             width: 100%;
-            height: 5.7in;
+            height: 5.2in;
             object-fit: contain;
             background: #0a192f;
-            border-radius: 0.08in;
+            border-radius: 0.07in;
             display: block;
             margin: 0 auto;
         }
 
         .fig-caption {
-            font-size: 14pt;
+            font-size: 13.5pt;
             font-weight: 700;
             color: #ffffff;
-            margin-top: 0.04in;
-            line-height: 1.25;
+            margin-top: 0.03in;
+            line-height: 1.22;
         }
 
         .fig-caption span {
@@ -259,22 +312,22 @@
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 15.5pt;
-            margin-top: 0.06in;
+            font-size: 15pt;
+            margin-top: 0.05in;
         }
 
         .matrix-table th, .matrix-table td {
             border: 1.5px solid #0a192f;
-            padding: 0.06in 0.08in;
+            padding: 0.05in 0.07in;
             text-align: left;
-            line-height: 1.25;
+            line-height: 1.24;
         }
 
         .matrix-table th {
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 16pt;
+            font-size: 15.5pt;
         }
 
         .matrix-table tr:nth-child(even) {
@@ -284,28 +337,28 @@
         .forensic-insight-box {
             background: #e0f2fe;
             border-left: 4px solid #0077ff;
-            border-radius: 0.08in;
-            padding: 0.06in 0.08in;
-            font-size: 14.5pt;
-            line-height: 1.28;
+            border-radius: 0.07in;
+            padding: 0.05in 0.07in;
+            font-size: 14pt;
+            line-height: 1.26;
             color: #0a192f;
-            margin-top: 0.05in;
+            margin-top: 0.04in;
         }
 
         /* Corpus Box in Card 3 */
         .corpus-box {
             background: #f1f5f9;
             border: 1.5px solid #cbd5e1;
-            border-radius: 0.08in;
-            padding: 0.08in 0.09in;
-            margin-top: 0.06in;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
+            margin-top: 0.05in;
         }
 
         .corpus-title {
-            font-size: 14.5pt;
+            font-size: 14pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.04in;
+            margin-bottom: 0.03in;
             text-align: center;
             letter-spacing: 0.02em;
         }
@@ -313,17 +366,17 @@
         .corpus-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.06in;
-            font-size: 13.5pt;
+            gap: 0.05in;
+            font-size: 13pt;
             color: #1e293b;
         }
 
         .corpus-item {
             background: #ffffff;
-            padding: 0.05in 0.06in;
+            padding: 0.04in 0.05in;
             border-radius: 0.05in;
             border-left: 3px solid #00d4ff;
-            line-height: 1.24;
+            line-height: 1.22;
         }
 
         /* Architecture Diagram Flow (Column 2) */
@@ -331,35 +384,35 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.07in;
-            margin: 0.04in 0;
+            gap: 0.05in;
+            margin: 0.03in 0;
         }
 
         .arch-box {
             background-color: #0a192f;
             color: #ffffff;
             border: 2.5px solid #00d4ff;
-            border-radius: 0.11in;
-            padding: 0.22in 0.22in;
+            border-radius: 0.10in;
+            padding: 0.16in 0.20in;
             text-align: center;
-            font-size: 21pt;
+            font-size: 19.5pt;
             font-weight: 800;
             width: 98%;
-            box-shadow: 0 4px 14px rgba(10, 25, 47, 0.14);
+            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.14);
         }
 
         .arch-box.highlight {
             background: #00d4ff;
             color: #0a192f;
             border: 2.5px solid #0a192f;
-            box-shadow: 0 6px 18px rgba(0, 212, 255, 0.35);
+            box-shadow: 0 5px 16px rgba(0, 212, 255, 0.35);
         }
 
         .arch-sub {
-            font-size: 15.5pt;
+            font-size: 14.5pt;
             font-weight: 600;
             color: #00d4ff;
-            margin-top: 0.04in;
+            margin-top: 0.02in;
         }
 
         .arch-box.highlight .arch-sub {
@@ -375,33 +428,51 @@
 
         .flow-line {
             width: 0.05in;
-            height: 0.24in;
+            height: 0.16in;
             background-color: #00d4ff;
         }
 
         .flow-head {
             width: 0;
             height: 0;
-            border-left: 0.10in solid transparent;
-            border-right: 0.10in solid transparent;
-            border-top: 0.15in solid #00d4ff;
+            border-left: 0.09in solid transparent;
+            border-right: 0.09in solid transparent;
+            border-top: 0.13in solid #00d4ff;
+        }
+
+        /* Dual Pipeline Indicator (from B1 Training vs Inference) */
+        .pipeline-indicator-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #f1f5f9;
+            border: 1.5px solid #00d4ff;
+            border-radius: 0.06in;
+            padding: 0.04in 0.08in;
+            margin-top: 0.04in;
+            font-size: 13pt;
+            font-weight: 700;
+            color: #0a192f;
+        }
+
+        .pipeline-indicator-bar span b {
+            color: #0077ff;
         }
 
         /* Mathematical sequence steps in Card 5 */
         .step-pill-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.07in;
-            margin: 0.06in 0;
+            gap: 0.06in;
+            margin: 0.05in 0;
         }
 
         .step-pill {
             background: #f1f5f9;
             border-left: 4px solid #00d4ff;
             border-radius: 0.06in;
-            padding: 0.06in 0.09in;
-            font-size: 15.5pt;
-            line-height: 1.24;
+            padding: 0.05in 0.08in;
+            font-size: 14.5pt;
+            line-height: 1.22;
             color: #0a192f;
         }
 
@@ -412,18 +483,18 @@
         .temporal-formula-box {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.08in;
-            padding: 0.07in 0.10in;
-            margin: 0.05in 0;
-            font-size: 14pt;
-            line-height: 1.28;
+            border-radius: 0.07in;
+            padding: 0.05in 0.08in;
+            margin: 0.04in 0;
+            font-size: 13.5pt;
+            line-height: 1.25;
             border-left: 4px solid #00d4ff;
         }
 
         .formula-text {
             display: block;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 16.5pt;
+            font-size: 15.5pt;
             font-weight: 800;
             color: #00d4ff;
             margin: 0.02in 0;
@@ -432,23 +503,23 @@
 
         .formula-desc {
             display: block;
-            font-size: 13.5pt;
+            font-size: 12.5pt;
             color: #cbd5e1;
         }
 
         .pipeline-spec-strip {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 0.06in;
-            margin: 0.05in 0;
+            gap: 0.05in;
+            margin: 0.04in 0;
         }
 
         .pipe-spec-item {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.06in;
-            padding: 0.05in 0.06in;
-            font-size: 13.5pt;
+            border-radius: 0.05in;
+            padding: 0.04in 0.06in;
+            font-size: 13pt;
             text-align: center;
             border-top: 2px solid #00d4ff;
         }
@@ -461,17 +532,17 @@
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.08in;
-            margin-top: 0.05in;
+            gap: 0.06in;
+            margin-top: 0.04in;
         }
 
         .comp-card {
             background: #f1f5f9;
-            border-radius: 0.08in;
-            padding: 0.09in 0.10in;
+            border-radius: 0.07in;
+            padding: 0.07in 0.09in;
             border-left: 4px solid #0a192f;
-            font-size: 15pt;
-            line-height: 1.26;
+            font-size: 14.5pt;
+            line-height: 1.24;
         }
 
         .comp-card.highlight {
@@ -480,7 +551,7 @@
         }
 
         .comp-title {
-            font-size: 16.5pt;
+            font-size: 16pt;
             font-weight: 800;
             color: #0a192f;
             margin-bottom: 0.02in;
@@ -490,13 +561,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 16pt;
-            margin: 0.04in 0;
+            font-size: 15.5pt;
+            margin: 0.03in 0;
         }
 
         th, td {
             border: 1.5px solid #0a192f;
-            padding: 0.06in 0.08in;
+            padding: 0.05in 0.07in;
             text-align: left;
         }
 
@@ -504,7 +575,7 @@
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 16.5pt;
+            font-size: 16pt;
         }
 
         tr:nth-child(even) {
@@ -515,29 +586,29 @@
         .stat-container-4 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 0.06in;
-            margin: 0.04in 0;
+            gap: 0.05in;
+            margin: 0.03in 0;
         }
 
         .stat-box {
             background: #0a192f;
             color: #00d4ff;
             text-align: center;
-            padding: 0.10in 0.05in;
-            border-radius: 0.10in;
+            padding: 0.08in 0.04in;
+            border-radius: 0.08in;
             border: 2.5px solid #00d4ff;
             box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15);
         }
 
         .stat-number {
-            font-size: 35pt;
+            font-size: 33pt;
             font-weight: 900;
             line-height: 1;
             margin-bottom: 0.02in;
         }
 
         .stat-label {
-            font-size: 13.5pt;
+            font-size: 12.5pt;
             font-weight: 800;
             letter-spacing: 0.05em;
             color: #ffffff;
@@ -550,10 +621,10 @@
             background: #0a192f;
             color: #ffffff;
             border: 2px solid #00d4ff;
-            border-radius: 0.08in;
-            padding: 0.06in 0.10in;
-            margin-top: 0.04in;
-            font-size: 15pt;
+            border-radius: 0.07in;
+            padding: 0.05in 0.08in;
+            margin-top: 0.03in;
+            font-size: 14pt;
             font-weight: 700;
         }
 
@@ -562,10 +633,10 @@
         }
 
         .eval-insight-note {
-            font-size: 14pt;
+            font-size: 13.5pt;
             color: #334155;
-            line-height: 1.25;
-            margin-top: 0.05in;
+            line-height: 1.24;
+            margin-top: 0.04in;
             border-left: 3px solid #00d4ff;
             padding-left: 0.06in;
         }
@@ -575,34 +646,34 @@
             background: #f8fafc;
             border: 2px solid #0a192f;
             border-top: 5px solid #00d4ff;
-            border-radius: 0.12in;
-            padding: 0.12in 0.14in;
+            border-radius: 0.11in;
+            padding: 0.10in 0.12in;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 14px rgba(10, 25, 47, 0.08);
+            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.08);
         }
 
         .qr-wrapper {
             background: #ffffff;
-            padding: 0.06in;
+            padding: 0.05in;
             border: 2px solid #00d4ff;
-            border-radius: 0.10in;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0.04in;
+            border-radius: 0.09in;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.03in;
             display: inline-block;
         }
 
         .showcase-qr-img {
-            width: 2.85in;
-            height: 2.85in;
+            width: 2.65in;
+            height: 2.65in;
             display: block;
         }
 
         .showcase-qr-title {
-            font-size: 19pt;
+            font-size: 18pt;
             font-weight: 900;
             color: #0a192f;
             margin-bottom: 0.02in;
@@ -610,7 +681,7 @@
         }
 
         .showcase-qr-url {
-            font-size: 15.5pt;
+            font-size: 15pt;
             font-weight: 800;
             color: #0077ff;
             margin-bottom: 0.03in;
@@ -618,15 +689,15 @@
         }
 
         .showcase-qr-desc {
-            font-size: 14pt;
+            font-size: 13.5pt;
             color: #334155;
-            line-height: 1.26;
-            margin-bottom: 0.05in;
+            line-height: 1.24;
+            margin-bottom: 0.04in;
         }
 
         .feature-pills {
             display: flex;
-            gap: 0.06in;
+            gap: 0.05in;
             justify-content: center;
             width: 100%;
         }
@@ -634,10 +705,10 @@
         .pill {
             background: #e0f2fe;
             color: #0369a1;
-            font-size: 13pt;
+            font-size: 12.5pt;
             font-weight: 700;
-            padding: 0.03in 0.07in;
-            border-radius: 0.06in;
+            padding: 0.03in 0.06in;
+            border-radius: 0.05in;
             border: 1px solid #bae6fd;
         }
 
@@ -646,18 +717,18 @@
             background: #ffffff;
             border: 1.5px solid #0a192f;
             border-left: 4px solid #00d4ff;
-            border-radius: 0.08in;
-            padding: 0.07in 0.09in;
-            margin-top: 0.06in;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
+            margin-top: 0.05in;
             width: 100%;
             text-align: left;
         }
 
         .demo-flow-title {
-            font-size: 14.5pt;
+            font-size: 14pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.04in;
+            margin-bottom: 0.03in;
             text-align: center;
             letter-spacing: 0.02em;
         }
@@ -665,12 +736,12 @@
         .demo-step-list {
             display: flex;
             flex-direction: column;
-            gap: 0.03in;
+            gap: 0.02in;
         }
 
         .demo-step-item {
-            font-size: 13.5pt;
-            line-height: 1.24;
+            font-size: 13pt;
+            line-height: 1.22;
             color: #1e293b;
         }
 
@@ -682,7 +753,7 @@
         .bottom-bar {
             display: grid;
             grid-template-columns: 1fr 1fr 1.15fr;
-            gap: 0.24in;
+            gap: 0.22in;
             flex-shrink: 0;
             align-items: stretch;
         }
@@ -692,25 +763,25 @@
         }
 
         .references-list {
-            font-size: 13.5pt;
-            padding-left: 0.24in;
+            font-size: 13pt;
+            padding-left: 0.22in;
         }
 
         .references-list li {
-            font-size: 13pt;
-            line-height: 1.24;
-            margin-bottom: 0.03in;
+            font-size: 12.5pt;
+            line-height: 1.22;
+            margin-bottom: 0.02in;
             color: #334155;
         }
 
         .ethics-box {
             background: #f1f5f9;
             border-left: 4px solid #00d4ff;
-            border-radius: 0.06in;
+            border-radius: 0.05in;
             padding: 0.04in 0.06in;
-            margin-top: 0.04in;
-            font-size: 12.5pt;
-            line-height: 1.22;
+            margin-top: 0.03in;
+            font-size: 12pt;
+            line-height: 1.20;
             color: #1e293b;
         }
     </style>
@@ -730,7 +801,7 @@
             </div>
         </header>
 
-        <!-- ================= MAIN 3-COLUMN BODY (BALANCED, ZERO EMPTY GAPS) ================= -->
+        <!-- ================= MAIN 3-COLUMN BODY (TIGHT, FULLY BALANCED, ZERO EMPTY VOIDS) ================= -->
         <main class="poster-body">
 
             <!-- ================= COLUMN 1: LEFT ================= -->
@@ -739,13 +810,24 @@
                 <!-- 1. PROBLEM -->
                 <article class="card">
                     <h2>1. THE DEEPFAKE PROBLEM</h2>
-                    <p>Deepfakes utilize Generative Adversarial Networks (GANs) and diffusion models to synthesize hyper-realistic facial impersonations in digital video feeds.</p>
-                    <p>Standard single-frame CNNs analyze isolated stills, ignoring vital inter-frame temporal continuity such as blinking frequency, optical flow, and light jitter. By correlating facial landmark trajectory with optical flow anomalies across time, our system exposes synthetic artifacts that elude static inspection.</p>
+                    <p>Deepfakes synthesize hyper-realistic human facial replacements in video feeds using generative deep learning models.</p>
                     
-                    <ul style="margin-top: 0.03in;">
-                        <li><b>Inter-Frame Flickering:</b> Frame-independent GAN synthesis produces erratic micro-jitter across consecutive frames.</li>
-                        <li><b>Boundary Blending Seams:</b> Face-swap blending edges introduce high-frequency pixel anomalies around the jawline.</li>
-                    </ul>
+                    <div class="tools-tag-strip">
+                        <b>Creation Tools:</b>
+                        <span class="tool-badge">FaceSwap</span>
+                        <span class="tool-badge">DeepFaceLab</span>
+                        <span class="tool-badge">Faceit</span>
+                        <span class="tool-badge">GANs / Diffusion</span>
+                    </div>
+
+                    <div class="threat-grid">
+                        <div class="threat-item"><b>Fake News:</b> Viral synthetic hoaxes</div>
+                        <div class="threat-item"><b>Financial Fraud:</b> Executive spoofing</div>
+                        <div class="threat-item"><b>Election Sabotage:</b> Politician deepfakes</div>
+                        <div class="threat-item"><b>Identity Theft:</b> Extortion &amp; defamation</div>
+                    </div>
+
+                    <p style="margin-top: 0.03in;">Single-frame CNNs analyze isolated stills, ignoring vital temporal continuity like optical flow and blinking jitter. Our <b>Spatio-Temporal Framework</b> captures both spatial and motion cues for reliable detection.</p>
 
                     <div class="problem-stat-grid">
                         <div class="problem-stat-item">
@@ -765,12 +847,11 @@
                     <div class="fig-box">
                         <img src="poster_visual_option1_forensics_split.jpg" alt="Scientific Forensics Split Portrait" class="fig-img-split">
                         <div class="fig-caption">
-                            <span>Figure 1:</span> High-Tech Forensics Split Analysis.<br>
-                            <b>Left:</b> Authentic Skin Texture &amp; 68-Point Biometric Landmarks.<br>
+                            <span>Figure 1:</span> Forensics Split Analysis.<br>
+                            <b>Left:</b> Authentic Biological Skin &amp; 68 Biometric Landmarks.<br>
                             <b>Right:</b> Deepfake Boundary Artifacts with Grad-CAM Heatmap Trace.
                         </div>
                     </div>
-                    <p><b>Diagnostic Finding:</b> Manipulated facial crops demonstrate acute thermal energy concentration along boundary contours, exposing synthetic blending edges undetectable to human vision.</p>
                     
                     <table class="matrix-table">
                         <thead>
@@ -785,7 +866,7 @@
                     </table>
 
                     <div class="forensic-insight-box">
-                        <b>Forensic Insight:</b> Grad-CAM activation maps highlight anomalous gradient spikes along the jawline and nasal seams where GAN blending boundaries fail Poisson seamless cloning.
+                        <b>Forensic Diagnostic:</b> Grad-CAM thermal gradient analysis detects high-frequency energy concentration along boundary contours where GAN face-swaps fail seamless Poisson blending.
                     </div>
                 </article>
 
@@ -793,19 +874,19 @@
                 <article class="card">
                     <h2>3. CORE OBJECTIVES &amp; CORPUS</h2>
                     <ul>
-                        <li><b>Spatio-Temporal Fusion:</b> Couple ResNeXt-50 grouped convolutions with LSTM recurrent memory cells to capture micro-flicker anomalies.</li>
+                        <li><b>Spatio-Temporal Fusion:</b> Couple ResNeXt-50 grouped convolutions with LSTM recurrent cells to capture micro-flickering anomalies.</li>
                         <li><b>Explainability (XAI):</b> Generate Class Activation Maps (CAM) identifying tampered facial zones for judicial evidentiary trust.</li>
                         <li><b>Generalization:</b> Evaluated across unseen actor identities to prevent synthetic facial overfitting.</li>
-                        <li><b>Scalable Inference:</b> Optimized architecture providing real-time inference latency under 2 seconds per video.</li>
+                        <li><b>Sub-2s Latency:</b> Real-time video processing designed for scalable automated screening.</li>
                     </ul>
 
                     <div class="corpus-box">
-                        <div class="corpus-title">MULTI-BENCHMARK TRAINING CORPUS (23,186 SEQUENCES)</div>
+                        <div class="corpus-title">MULTI-BENCHMARK TRAINING CORPUS (23,186 VIDEOS)</div>
                         <div class="corpus-grid">
                             <div class="corpus-item"><b>DFDC (Meta AI):</b> 18,200 Balanced Clips</div>
                             <div class="corpus-item"><b>FaceForensics++:</b> 3,000 High-Res Clips</div>
                             <div class="corpus-item"><b>Celeb-DF v2:</b> 1,986 Realistic Videos</div>
-                            <div class="corpus-item"><b>Corpus Split:</b> 80% Train | 10% Val | 10% Test</div>
+                            <div class="corpus-item"><b>Training Setup:</b> PyTorch • Google Cloud GPU</div>
                         </div>
                     </div>
                 </article>
@@ -816,9 +897,14 @@
             <section class="column">
                 
                 <!-- 4. SYSTEM ARCHITECTURE -->
-                <article class="card" style="border-top: 8px solid #00d4ff; box-shadow: 0 8px 24px rgba(10, 25, 47, 0.12);">
-                    <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 26pt; margin-bottom: 0.04in;">4. SYSTEM ARCHITECTURE</h2>
+                <article class="card" style="border-top: 7px solid #00d4ff; box-shadow: 0 6px 20px rgba(10, 25, 47, 0.12);">
+                    <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 25pt; margin-bottom: 0.04in;">4. DUAL-FLOW SYSTEM ARCHITECTURE</h2>
                     
+                    <div class="pipeline-indicator-bar">
+                        <span><b>Training Flow:</b> 23K Videos → Face Crop → ResNeXt+LSTM</span>
+                        <span><b>Inference Flow:</b> Video Upload → Verdict + Heatmap</span>
+                    </div>
+
                     <div class="arch-diagram">
                         
                         <div class="arch-box">
@@ -889,8 +975,8 @@
                     </div>
 
                     <div class="pipeline-spec-strip">
-                        <div class="pipe-spec-item"><b>Stride:</b> 20 Equidistant Faces</div>
-                        <div class="pipe-spec-item"><b>RNN Memory:</b> 512 Hidden Cells</div>
+                        <div class="pipe-spec-item"><b>Window:</b> 1 Sec (20 Frames)</div>
+                        <div class="pipe-spec-item"><b>LSTM Units:</b> 512 Hidden Cells</div>
                         <div class="pipe-spec-item"><b>Accuracy Boost:</b> +8.6% vs Static 2D</div>
                     </div>
 
@@ -932,8 +1018,8 @@
                             <div class="stat-label">LATENCY</div>
                         </div>
                     </div>
-                    <div class="fig-box" style="margin: 0.04in 0; background: #ffffff;">
-                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; height: 3.1in; object-fit: contain; display: block; margin: 0 auto;">
+                    <div class="fig-box" style="margin: 0.03in 0; background: #ffffff;">
+                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; height: 2.8in; object-fit: contain; display: block; margin: 0 auto;">
                         <div class="fig-caption" style="color: #0a192f; margin-top: 0.02in;">
                             <span>Figure 3:</span> Cross-Dataset Confusion Matrix (True Real: 91.2%, True Fake: 84.8%).
                         </div>
@@ -958,7 +1044,7 @@
                         </thead>
                         <tbody>
                             <tr><td>Architecture</td><td><b>ResNeXt-50 (32×4d) + LSTM</b></td></tr>
-                            <tr><td>Frame Horizon</td><td>20 Frames / Video (Uniform Sampling)</td></tr>
+                            <tr><td>Frame Horizon</td><td>20 Frames / Video (1-Sec Temporal Window)</td></tr>
                             <tr><td>Crop Resolution</td><td>112 × 112 Pixels (RGB Normalized)</td></tr>
                             <tr><td>Optimization</td><td>Adam (lr=1e-5, weight_decay=1e-5)</td></tr>
                             <tr><td>Loss Objective</td><td>BCEWithLogitsLoss (Binary Cross-Entropy)</td></tr>
