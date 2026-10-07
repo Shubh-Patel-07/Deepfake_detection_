@@ -47,11 +47,11 @@
             width: 27in;
             height: 40in;
             max-height: 40in;
-            padding: 1.4in 1.25in 1.3in;
+            padding: 0.55in 0.60in 0.55in;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 0.11in;
+            gap: 0.14in;
             overflow: hidden;
         }
 
@@ -60,15 +60,15 @@
             background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
             color: #ffffff;
             text-align: center;
-            padding: 0.16in 0.6in 0.13in;
-            border-bottom: 0.11in solid #00d4ff;
+            padding: 0.18in 0.6in 0.15in;
+            border-bottom: 0.12in solid #00d4ff;
             border-radius: 0.15in;
             box-shadow: 0 8px 24px rgba(10, 25, 47, 0.22);
             flex-shrink: 0;
         }
 
         .college-info {
-            font-size: 25pt;
+            font-size: 28pt;
             font-weight: 800;
             letter-spacing: 0.08em;
             color: #ffffff;
@@ -76,7 +76,7 @@
         }
 
         .department {
-            font-size: 20pt;
+            font-size: 22pt;
             font-weight: 600;
             color: #00d4ff;
             letter-spacing: 0.04em;
@@ -84,10 +84,10 @@
         }
 
         .project-title {
-            font-size: 50pt;
+            font-size: 55pt;
             font-weight: 900;
             color: #ffffff;
-            line-height: 1.10;
+            line-height: 1.08;
             text-transform: uppercase;
             letter-spacing: 0.02em;
             margin-bottom: 0.03in;
@@ -95,7 +95,7 @@
         }
 
         .project-subtitle {
-            font-size: 21pt;
+            font-size: 23pt;
             font-weight: 600;
             color: #00d4ff;
             margin-bottom: 0.06in;
@@ -105,10 +105,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 18.5pt;
+            font-size: 20pt;
             font-weight: 700;
             color: #e2e8f0;
-            padding: 0.05in 0.8in 0;
+            padding: 0.06in 0.8in 0;
             border-top: 2px solid rgba(0, 212, 255, 0.35);
         }
 
@@ -117,38 +117,48 @@
             display: grid;
             grid-template-columns: 1fr 1.25fr 1fr;
             gap: 0.18in;
-            flex-shrink: 0;
+            flex: 1;
             align-items: stretch;
+            min-height: 0;
         }
 
         .column {
             display: flex;
             flex-direction: column;
-            gap: 0.11in;
+            gap: 0.14in;
             height: 100%;
         }
 
-        /* Card / Section */
+        /* Card / Section - Flex grow to fill column height with NO blank gaps! */
         .card {
             background: #ffffff;
             border-radius: 0.12in;
-            padding: 0.14in 0.16in;
-            box-shadow: 0 4px 14px rgba(10, 25, 47, 0.06);
-            border-top: 4.5px solid #00d4ff;
+            padding: 0.16in 0.18in;
+            box-shadow: 0 4px 16px rgba(10, 25, 47, 0.07);
+            border-top: 5px solid #00d4ff;
             border-left: 1px solid rgba(10, 25, 47, 0.08);
             border-right: 1px solid rgba(10, 25, 47, 0.08);
             border-bottom: 1px solid rgba(10, 25, 47, 0.08);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        /* Custom flex weights for Column 2 (2 cards vs 3 cards in Col 1 & 3) */
+        .column-center .card:first-child {
+            flex: 1.05;
+        }
+        .column-center .card:last-child {
+            flex: 1.15;
         }
 
         h2 {
-            font-size: 21pt;
+            font-size: 26pt;
             font-weight: 800;
             color: #0a192f;
             margin-bottom: 0.05in;
-            border-bottom: 3px solid #00d4ff;
+            border-bottom: 3.5px solid #00d4ff;
             padding-bottom: 0.02in;
             display: inline-block;
             letter-spacing: 0.01em;
@@ -156,22 +166,22 @@
         }
 
         p {
-            font-size: 16pt;
+            font-size: 17.5pt;
             line-height: 1.28;
             color: #1e293b;
             margin-bottom: 0.03in;
         }
 
         ul, ol {
-            padding-left: 0.28in;
+            padding-left: 0.32in;
             margin-bottom: 0.02in;
         }
 
         li {
-            font-size: 15.5pt;
-            line-height: 1.24;
+            font-size: 17pt;
+            line-height: 1.26;
             color: #1e293b;
-            margin-bottom: 0.02in;
+            margin-bottom: 0.03in;
         }
 
         b, strong {
@@ -183,12 +193,12 @@
         .tools-tag-strip {
             display: flex;
             align-items: center;
-            gap: 0.04in;
+            gap: 0.06in;
             background: #f1f5f9;
-            border-radius: 0.05in;
-            padding: 0.03in 0.06in;
-            margin: 0.03in 0;
-            font-size: 12.5pt;
+            border-radius: 0.06in;
+            padding: 0.05in 0.08in;
+            margin: 0.04in 0;
+            font-size: 15pt;
             color: #0a192f;
         }
 
@@ -199,27 +209,27 @@
         .tool-badge {
             background: #e0f2fe;
             color: #0369a1;
-            padding: 0.02in 0.05in;
-            border-radius: 0.04in;
+            padding: 0.03in 0.07in;
+            border-radius: 0.05in;
             font-weight: 700;
-            font-size: 11.5pt;
+            font-size: 14pt;
         }
 
         /* Threat Matrix Grid */
         .threat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.04in;
-            margin: 0.03in 0;
+            gap: 0.06in;
+            margin: 0.04in 0;
         }
 
         .threat-item {
             background: #f8fafc;
-            border-left: 3px solid #00d4ff;
-            border-radius: 0.04in;
-            padding: 0.03in 0.05in;
-            font-size: 12.5pt;
-            line-height: 1.20;
+            border-left: 3.5px solid #00d4ff;
+            border-radius: 0.05in;
+            padding: 0.05in 0.07in;
+            font-size: 14.5pt;
+            line-height: 1.22;
             color: #1e293b;
         }
 
@@ -231,22 +241,22 @@
         .problem-stat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.05in;
-            margin-top: 0.03in;
+            gap: 0.06in;
+            margin-top: 0.04in;
         }
 
         .problem-stat-item {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.06in;
-            padding: 0.04in 0.06in;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
             text-align: center;
-            border-left: 3px solid #00d4ff;
+            border-left: 3.5px solid #00d4ff;
         }
 
         .p-num {
             display: block;
-            font-size: 18pt;
+            font-size: 24pt;
             font-weight: 900;
             color: #00d4ff;
             line-height: 1.1;
@@ -254,7 +264,7 @@
 
         .p-lbl {
             display: block;
-            font-size: 11.5pt;
+            font-size: 13.5pt;
             font-weight: 700;
             color: #e2e8f0;
             line-height: 1.15;
@@ -266,15 +276,15 @@
             background: #0a192f;
             border: 2px solid #00d4ff;
             border-radius: 0.09in;
-            padding: 0.05in;
+            padding: 0.06in;
             text-align: center;
             box-shadow: 0 4px 14px rgba(10, 25, 47, 0.16);
-            margin: 0.03in 0;
+            margin: 0.04in 0;
         }
 
         .fig-img-split {
             width: 100%;
-            height: 3.5in;
+            height: 4.2in;
             object-fit: cover;
             border-radius: 0.06in;
             display: block;
@@ -283,7 +293,7 @@
 
         .fig-img-pipeline {
             width: 100%;
-            height: 4.4in;
+            height: 5.2in;
             object-fit: contain;
             background: #0a192f;
             border-radius: 0.06in;
@@ -292,11 +302,11 @@
         }
 
         .fig-caption {
-            font-size: 12.5pt;
+            font-size: 14pt;
             font-weight: 700;
             color: #ffffff;
-            margin-top: 0.03in;
-            line-height: 1.20;
+            margin-top: 0.04in;
+            line-height: 1.22;
         }
 
         .fig-caption span {
@@ -307,13 +317,13 @@
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13.5pt;
+            font-size: 15pt;
             margin-top: 0.04in;
         }
 
         .matrix-table th, .matrix-table td {
             border: 1.5px solid #0a192f;
-            padding: 0.04in 0.06in;
+            padding: 0.05in 0.07in;
             text-align: left;
             line-height: 1.20;
         }
@@ -322,7 +332,7 @@
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 14pt;
+            font-size: 15.5pt;
         }
 
         .matrix-table tr:nth-child(even) {
@@ -331,29 +341,29 @@
 
         .forensic-insight-box {
             background: #e0f2fe;
-            border-left: 3.5px solid #0077ff;
+            border-left: 4px solid #0077ff;
             border-radius: 0.06in;
-            padding: 0.04in 0.06in;
-            font-size: 12.5pt;
-            line-height: 1.22;
+            padding: 0.05in 0.08in;
+            font-size: 14pt;
+            line-height: 1.24;
             color: #0a192f;
-            margin-top: 0.03in;
+            margin-top: 0.04in;
         }
 
         /* Corpus Box in Card 3 */
         .corpus-box {
             background: #f1f5f9;
             border: 1.5px solid #cbd5e1;
-            border-radius: 0.06in;
-            padding: 0.05in 0.07in;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
             margin-top: 0.04in;
         }
 
         .corpus-title {
-            font-size: 13pt;
+            font-size: 15pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.02in;
+            margin-bottom: 0.03in;
             text-align: center;
             letter-spacing: 0.02em;
         }
@@ -361,17 +371,17 @@
         .corpus-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.04in;
-            font-size: 12pt;
+            gap: 0.05in;
+            font-size: 13.5pt;
             color: #1e293b;
         }
 
         .corpus-item {
             background: #ffffff;
-            padding: 0.03in 0.05in;
-            border-radius: 0.04in;
-            border-left: 3px solid #00d4ff;
-            line-height: 1.18;
+            padding: 0.04in 0.06in;
+            border-radius: 0.05in;
+            border-left: 3.5px solid #00d4ff;
+            line-height: 1.20;
         }
 
         /* Architecture Diagram Flow (Column 2) */
@@ -379,8 +389,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.04in;
-            margin: 0.03in 0;
+            gap: 0.05in;
+            margin: 0.04in 0;
+            flex: 1;
+            justify-content: space-between;
         }
 
         .arch-box {
@@ -388,9 +400,9 @@
             color: #ffffff;
             border: 2px solid #00d4ff;
             border-radius: 0.08in;
-            padding: 0.12in 0.16in;
+            padding: 0.16in 0.18in;
             text-align: center;
-            font-size: 17.5pt;
+            font-size: 20pt;
             font-weight: 800;
             width: 98%;
             box-shadow: 0 3px 10px rgba(10, 25, 47, 0.14);
@@ -404,10 +416,10 @@
         }
 
         .arch-sub {
-            font-size: 13pt;
+            font-size: 14pt;
             font-weight: 600;
             color: #00d4ff;
-            margin-top: 0.02in;
+            margin-top: 0.03in;
         }
 
         .arch-box.highlight .arch-sub {
@@ -422,17 +434,17 @@
         }
 
         .flow-line {
-            width: 0.04in;
-            height: 0.12in;
+            width: 0.05in;
+            height: 0.16in;
             background-color: #00d4ff;
         }
 
         .flow-head {
             width: 0;
             height: 0;
-            border-left: 0.08in solid transparent;
-            border-right: 0.08in solid transparent;
-            border-top: 0.11in solid #00d4ff;
+            border-left: 0.09in solid transparent;
+            border-right: 0.09in solid transparent;
+            border-top: 0.13in solid #00d4ff;
         }
 
         /* Dual Pipeline Indicator */
@@ -441,10 +453,10 @@
             justify-content: space-between;
             background: #f1f5f9;
             border: 1.5px solid #00d4ff;
-            border-radius: 0.05in;
-            padding: 0.03in 0.06in;
-            margin-top: 0.03in;
-            font-size: 12pt;
+            border-radius: 0.06in;
+            padding: 0.06in 0.08in;
+            margin-bottom: 0.04in;
+            font-size: 14pt;
             font-weight: 700;
             color: #0a192f;
         }
@@ -457,17 +469,17 @@
         .step-pill-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.05in;
+            gap: 0.06in;
             margin: 0.04in 0;
         }
 
         .step-pill {
             background: #f1f5f9;
-            border-left: 3.5px solid #00d4ff;
-            border-radius: 0.05in;
-            padding: 0.04in 0.06in;
-            font-size: 13pt;
-            line-height: 1.18;
+            border-left: 4px solid #00d4ff;
+            border-radius: 0.06in;
+            padding: 0.05in 0.07in;
+            font-size: 14.5pt;
+            line-height: 1.20;
             color: #0a192f;
         }
 
@@ -478,18 +490,18 @@
         .temporal-formula-box {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.06in;
-            padding: 0.04in 0.07in;
-            margin: 0.03in 0;
-            font-size: 12pt;
-            line-height: 1.20;
-            border-left: 3.5px solid #00d4ff;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
+            margin: 0.04in 0;
+            font-size: 13.5pt;
+            line-height: 1.22;
+            border-left: 4px solid #00d4ff;
         }
 
         .formula-text {
             display: block;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 14pt;
+            font-size: 16pt;
             font-weight: 800;
             color: #00d4ff;
             margin: 0.02in 0;
@@ -498,25 +510,25 @@
 
         .formula-desc {
             display: block;
-            font-size: 11.5pt;
+            font-size: 13pt;
             color: #cbd5e1;
         }
 
         .pipeline-spec-strip {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 0.04in;
-            margin: 0.03in 0;
+            gap: 0.05in;
+            margin: 0.04in 0;
         }
 
         .pipe-spec-item {
             background: #0a192f;
             color: #ffffff;
-            border-radius: 0.04in;
-            padding: 0.03in 0.05in;
-            font-size: 11.5pt;
+            border-radius: 0.05in;
+            padding: 0.04in 0.06in;
+            font-size: 13pt;
             text-align: center;
-            border-top: 2px solid #00d4ff;
+            border-top: 2.5px solid #00d4ff;
         }
 
         .pipe-spec-item b {
@@ -527,26 +539,26 @@
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.05in;
-            margin-top: 0.03in;
+            gap: 0.06in;
+            margin-top: 0.04in;
         }
 
         .comp-card {
             background: #f1f5f9;
             border-radius: 0.06in;
             padding: 0.06in 0.08in;
-            border-left: 3.5px solid #0a192f;
-            font-size: 13pt;
-            line-height: 1.20;
+            border-left: 4px solid #0a192f;
+            font-size: 14pt;
+            line-height: 1.22;
         }
 
         .comp-card.highlight {
             background: #e0f2fe;
-            border-left: 3.5px solid #0077ff;
+            border-left: 4px solid #0077ff;
         }
 
         .comp-title {
-            font-size: 14pt;
+            font-size: 15.5pt;
             font-weight: 800;
             color: #0a192f;
             margin-bottom: 0.02in;
@@ -556,13 +568,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14pt;
-            margin: 0.02in 0;
+            font-size: 15.5pt;
+            margin: 0.03in 0;
         }
 
         th, td {
             border: 1.5px solid #0a192f;
-            padding: 0.04in 0.06in;
+            padding: 0.07in 0.09in;
             text-align: left;
         }
 
@@ -570,7 +582,7 @@
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 14.5pt;
+            font-size: 16pt;
         }
 
         tr:nth-child(even) {
@@ -581,29 +593,29 @@
         .stat-container-4 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 0.04in;
-            margin: 0.02in 0;
+            gap: 0.05in;
+            margin: 0.03in 0;
         }
 
         .stat-box {
             background: #0a192f;
             color: #00d4ff;
             text-align: center;
-            padding: 0.06in 0.03in;
-            border-radius: 0.07in;
+            padding: 0.08in 0.04in;
+            border-radius: 0.08in;
             border: 2px solid #00d4ff;
             box-shadow: 0 3px 10px rgba(10, 25, 47, 0.15);
         }
 
         .stat-number {
-            font-size: 28pt;
+            font-size: 32pt;
             font-weight: 900;
             line-height: 1;
             margin-bottom: 0.02in;
         }
 
         .stat-label {
-            font-size: 11pt;
+            font-size: 12.5pt;
             font-weight: 800;
             letter-spacing: 0.05em;
             color: #ffffff;
@@ -617,9 +629,9 @@
             color: #ffffff;
             border: 1.5px solid #00d4ff;
             border-radius: 0.06in;
-            padding: 0.04in 0.06in;
-            margin-top: 0.02in;
-            font-size: 12.5pt;
+            padding: 0.05in 0.08in;
+            margin-top: 0.03in;
+            font-size: 14pt;
             font-weight: 700;
         }
 
@@ -628,12 +640,12 @@
         }
 
         .eval-insight-note {
-            font-size: 12pt;
+            font-size: 13.5pt;
             color: #334155;
-            line-height: 1.20;
-            margin-top: 0.03in;
-            border-left: 3px solid #00d4ff;
-            padding-left: 0.05in;
+            line-height: 1.22;
+            margin-top: 0.04in;
+            border-left: 3.5px solid #00d4ff;
+            padding-left: 0.06in;
         }
 
         /* PROMINENT SHOWCASE QR CARD (ONLY SHOWCASE) */
@@ -662,13 +674,13 @@
         }
 
         .showcase-qr-img {
-            width: 2.2in;
-            height: 2.2in;
+            width: 2.7in;
+            height: 2.7in;
             display: block;
         }
 
         .showcase-qr-title {
-            font-size: 16pt;
+            font-size: 18pt;
             font-weight: 900;
             color: #0a192f;
             margin-bottom: 0.02in;
@@ -676,7 +688,7 @@
         }
 
         .showcase-qr-url {
-            font-size: 13.5pt;
+            font-size: 15pt;
             font-weight: 800;
             color: #0077ff;
             margin-bottom: 0.02in;
@@ -684,15 +696,15 @@
         }
 
         .showcase-qr-desc {
-            font-size: 12pt;
+            font-size: 13.5pt;
             color: #334155;
-            line-height: 1.20;
+            line-height: 1.22;
             margin-bottom: 0.03in;
         }
 
         .feature-pills {
             display: flex;
-            gap: 0.04in;
+            gap: 0.05in;
             justify-content: center;
             width: 100%;
         }
@@ -700,10 +712,10 @@
         .pill {
             background: #e0f2fe;
             color: #0369a1;
-            font-size: 11pt;
+            font-size: 12.5pt;
             font-weight: 700;
-            padding: 0.02in 0.05in;
-            border-radius: 0.04in;
+            padding: 0.03in 0.06in;
+            border-radius: 0.05in;
             border: 1px solid #bae6fd;
         }
 
@@ -711,19 +723,19 @@
         .live-demo-flow-box {
             background: #ffffff;
             border: 1.5px solid #0a192f;
-            border-left: 3.5px solid #00d4ff;
-            border-radius: 0.06in;
-            padding: 0.05in 0.07in;
+            border-left: 4px solid #00d4ff;
+            border-radius: 0.07in;
+            padding: 0.06in 0.08in;
             margin-top: 0.04in;
             width: 100%;
             text-align: left;
         }
 
         .demo-flow-title {
-            font-size: 12.5pt;
+            font-size: 14pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.02in;
+            margin-bottom: 0.03in;
             text-align: center;
             letter-spacing: 0.02em;
         }
@@ -731,12 +743,12 @@
         .demo-step-list {
             display: flex;
             flex-direction: column;
-            gap: 0.02in;
+            gap: 0.03in;
         }
 
         .demo-step-item {
-            font-size: 11.5pt;
-            line-height: 1.18;
+            font-size: 13pt;
+            line-height: 1.20;
             color: #1e293b;
         }
 
@@ -754,20 +766,21 @@
         }
 
         .benchmark-strip .card {
-            border-top: 4.5px solid #00d4ff;
-            padding: 0.12in 0.15in;
+            border-top: 5px solid #00d4ff;
+            padding: 0.14in 0.16in;
+            flex: 1;
         }
 
         .sota-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12.5pt;
+            font-size: 13.5pt;
             margin-top: 0.03in;
         }
 
         .sota-table th, .sota-table td {
             border: 1px solid #cbd5e1;
-            padding: 0.03in 0.05in;
+            padding: 0.04in 0.06in;
             text-align: left;
         }
 
@@ -775,7 +788,7 @@
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 13pt;
+            font-size: 14.5pt;
         }
 
         .sota-table tr.highlight-row {
@@ -791,7 +804,7 @@
         .ablation-item-list {
             display: flex;
             flex-direction: column;
-            gap: 0.03in;
+            gap: 0.04in;
             margin-top: 0.03in;
         }
 
@@ -800,10 +813,10 @@
             justify-content: space-between;
             align-items: center;
             background: #f8fafc;
-            border-left: 3.5px solid #0a192f;
-            padding: 0.03in 0.06in;
-            border-radius: 0.04in;
-            font-size: 12pt;
+            border-left: 4px solid #0a192f;
+            padding: 0.04in 0.07in;
+            border-radius: 0.05in;
+            font-size: 13.5pt;
         }
 
         .ablation-item.winner {
@@ -820,18 +833,18 @@
         .defense-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.04in;
+            gap: 0.05in;
             margin-top: 0.03in;
         }
 
         .defense-box {
             background: #f8fafc;
             border: 1px solid #cbd5e1;
-            border-left: 3px solid #00d4ff;
-            border-radius: 0.04in;
-            padding: 0.03in 0.05in;
-            font-size: 11.5pt;
-            line-height: 1.18;
+            border-left: 3.5px solid #00d4ff;
+            border-radius: 0.05in;
+            padding: 0.04in 0.06in;
+            font-size: 13pt;
+            line-height: 1.20;
         }
 
         .defense-box b {
@@ -848,30 +861,42 @@
         }
 
         .bottom-bar .card {
-            padding: 0.10in 0.14in;
+            border-top: 5px solid #00d4ff;
+            padding: 0.14in 0.16in;
             justify-content: space-between;
+            flex: 1;
+        }
+
+        .bottom-bar .card p {
+            font-size: 16pt;
+            line-height: 1.25;
+        }
+
+        .bottom-bar .card li {
+            font-size: 15.5pt;
+            line-height: 1.22;
         }
 
         .references-list {
-            font-size: 11.5pt;
-            padding-left: 0.20in;
+            font-size: 12.5pt;
+            padding-left: 0.22in;
         }
 
         .references-list li {
-            font-size: 11pt;
-            line-height: 1.18;
+            font-size: 12pt;
+            line-height: 1.20;
             margin-bottom: 0.02in;
             color: #334155;
         }
 
         .ethics-box {
             background: #f1f5f9;
-            border-left: 3px solid #00d4ff;
-            border-radius: 0.04in;
-            padding: 0.03in 0.05in;
+            border-left: 3.5px solid #00d4ff;
+            border-radius: 0.05in;
+            padding: 0.04in 0.06in;
             margin-top: 0.02in;
-            font-size: 10.5pt;
-            line-height: 1.16;
+            font-size: 12pt;
+            line-height: 1.20;
             color: #1e293b;
         }
     </style>
@@ -897,36 +922,57 @@
             <!-- ================= COLUMN 1: LEFT ================= -->
             <section class="column">
                 
-                <!-- 1. PROBLEM -->
+                                <!-- 1. PROBLEM -->
                 <article class="card">
                     <h2>1. THE DEEPFAKE PROBLEM</h2>
-                    <p>Deepfakes synthesize hyper-realistic human facial replacements in video feeds using generative deep learning models.</p>
+                    <p>Deepfakes synthesize hyper-realistic human facial replacements in video feeds using generative deep learning autoencoders and diffusion pipelines.</p>
                     
                     <div class="tools-tag-strip">
                         <b>Creation Tools:</b>
                         <span class="tool-badge">FaceSwap</span>
                         <span class="tool-badge">DeepFaceLab</span>
                         <span class="tool-badge">Faceit</span>
-                        <span class="tool-badge">GANs / Diffusion</span>
+                        <span class="tool-badge">GANs / Latent Diffusion</span>
+                    </div>
+
+                    <!-- Synthetic Generation Mechanism Flow -->
+                    <div style="background: #0a192f; color: #ffffff; border-radius: 0.07in; padding: 0.06in 0.08in; margin: 0.04in 0; border: 1.5px solid #00d4ff;">
+                        <div style="font-size: 13.5pt; font-weight: 800; color: #00d4ff; text-align: center; margin-bottom: 0.02in; letter-spacing: 0.02em;">
+                            ANATOMY OF A GENERATIVE FACE-SWAP PIPELINE
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.04in; font-size: 11.5pt; text-align: center;">
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">1. Face Alignment</b>
+                                68 Biometric landmarks &amp; Affine crop
+                            </div>
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">2. Latent Swap</b>
+                                Shared Encoder  &rarr;  Target Decoder
+                            </div>
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">3. Boundary Blend</b>
+                                Poisson image editing &amp; Color transfer
+                            </div>
+                        </div>
                     </div>
 
                     <div class="threat-grid">
-                        <div class="threat-item"><b>Fake News:</b> Viral synthetic hoaxes</div>
-                        <div class="threat-item"><b>Financial Fraud:</b> Executive spoofing</div>
-                        <div class="threat-item"><b>Election Sabotage:</b> Politician deepfakes</div>
-                        <div class="threat-item"><b>Identity Theft:</b> Extortion &amp; defamation</div>
+                        <div class="threat-item"><b>Fake News:</b> Viral synthetic hoaxes &amp; disinformation</div>
+                        <div class="threat-item"><b>Financial Fraud:</b> Executive voice/video spoofing</div>
+                        <div class="threat-item"><b>Election Sabotage:</b> Politician deepfake impersonation</div>
+                        <div class="threat-item"><b>Identity Theft:</b> Defamation, non-consensual imagery</div>
                     </div>
 
-                    <p style="margin-top: 0.02in;">Single-frame CNNs analyze isolated stills, ignoring vital temporal continuity like optical flow and blinking jitter. Our <b>Spatio-Temporal Framework</b> captures both spatial and motion cues for reliable detection.</p>
+                    <p style="margin-top: 0.02in;">Single-frame CNNs analyze isolated stills, ignoring vital temporal continuity like optical flow, blinking jitter, and landmark coherence. Our <b>Spatio-Temporal Framework</b> captures both spatial and motion cues for robust automated defense.</p>
 
                     <div class="problem-stat-grid">
                         <div class="problem-stat-item">
                             <span class="p-num">+900%</span>
-                            <span class="p-lbl">Annual Surge in Synthetic Media</span>
+                            <span class="p-lbl">Annual Surge in Malicious Synthetic Media</span>
                         </div>
                         <div class="problem-stat-item">
                             <span class="p-num">&lt;54%</span>
-                            <span class="p-lbl">Human Manual Detection Rate</span>
+                            <span class="p-lbl">Human Visual Inspection Accuracy</span>
                         </div>
                     </div>
                 </article>
@@ -960,7 +1006,7 @@
                     </div>
                 </article>
 
-                <!-- 3. OBJECTIVES & CORPUS -->
+                                <!-- 3. OBJECTIVES & CORPUS -->
                 <article class="card">
                     <h2>3. CORE OBJECTIVES &amp; CORPUS</h2>
                     <ul>
@@ -973,10 +1019,19 @@
                     <div class="corpus-box">
                         <div class="corpus-title">MULTI-BENCHMARK TRAINING CORPUS (23,186 VIDEOS)</div>
                         <div class="corpus-grid">
-                            <div class="corpus-item"><b>DFDC (Meta AI):</b> 18,200 Balanced Clips</div>
-                            <div class="corpus-item"><b>FaceForensics++:</b> 3,000 High-Res Clips</div>
-                            <div class="corpus-item"><b>Celeb-DF v2:</b> 1,986 Realistic Videos</div>
-                            <div class="corpus-item"><b>Training Setup:</b> PyTorch • Google Cloud GPU</div>
+                            <div class="corpus-item"><b>DFDC (Meta AI):</b> 18,200 Balanced Clips (78.5%)</div>
+                            <div class="corpus-item"><b>FaceForensics++:</b> 3,000 High-Res Clips (12.9%)</div>
+                            <div class="corpus-item"><b>Celeb-DF v2:</b> 1,986 Realistic Videos (8.6%)</div>
+                            <div class="corpus-item"><b>Data Balance:</b> 50% Authentic / 50% Manipulated</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.05in; margin-top: 0.04in;">
+                        <div style="background: #0a192f; color: #ffffff; border-radius: 0.05in; padding: 0.04in 0.06in; font-size: 12pt; text-align: center; border-left: 3px solid #00d4ff;">
+                            <b>Hardware:</b> NVIDIA GPU (16GB VRAM) • CUDA 12.x
+                        </div>
+                        <div style="background: #0a192f; color: #ffffff; border-radius: 0.05in; padding: 0.04in 0.06in; font-size: 12pt; text-align: center; border-left: 3px solid #00d4ff;">
+                            <b>Framework:</b> PyTorch 2.x • OpenCV • Gunicorn
                         </div>
                     </div>
                 </article>
@@ -984,15 +1039,15 @@
             </section>
 
             <!-- ================= COLUMN 2: CENTER ================= -->
-            <section class="column">
+            <section class="column column-center">
                 
-                <!-- 4. SYSTEM ARCHITECTURE -->
+                                <!-- 4. SYSTEM ARCHITECTURE -->
                 <article class="card" style="border-top: 5px solid #00d4ff; box-shadow: 0 4px 16px rgba(10, 25, 47, 0.12);">
-                    <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 22pt; margin-bottom: 0.03in;">4. DUAL-FLOW SYSTEM ARCHITECTURE</h2>
+                    <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 26pt; margin-bottom: 0.03in;">4. DUAL-FLOW SYSTEM ARCHITECTURE</h2>
                     
                     <div class="pipeline-indicator-bar">
-                        <span><b>Training Flow:</b> 23K Videos → Face Crop → ResNeXt+LSTM</span>
-                        <span><b>Inference Flow:</b> Video Upload → Verdict + Heatmap</span>
+                        <span><b>Training Flow:</b> 23K Videos  &rarr;  Face Crop  &rarr;  ResNeXt+LSTM</span>
+                        <span><b>Inference Flow:</b> Video Upload  &rarr;  Verdict + Heatmap</span>
                     </div>
 
                     <div class="arch-diagram">
@@ -1000,6 +1055,7 @@
                         <div class="arch-box">
                             CLIENT-SIDE WEB INTERFACE &amp; SCREENING
                             <div class="arch-sub">Django 5.x Backend • Bootstrap 5 UI • Client-Side face-api.js 68-Landmark Mesh</div>
+                            <div style="font-size: 12pt; color: #cbd5e1; margin-top: 0.02in; font-family: monospace;">Input Stream: MP4 / AVI Video  &rarr;  HTTP POST / Multipart Upload</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
@@ -1007,6 +1063,7 @@
                         <div class="arch-box">
                             UNIFORM TEMPORAL FRAME EXTRACTION
                             <div class="arch-sub">OpenCV cv2.VideoCapture • 20 Equidistant Temporal Frames Sampled (30 FPS)</div>
+                            <div style="font-size: 12pt; color: #cbd5e1; margin-top: 0.02in; font-family: monospace;">Output Tensor: [Batch, T=20 Frames, H=1080, W=1920, C=3]</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
@@ -1014,20 +1071,24 @@
                         <div class="arch-box">
                             BIOMETRIC LOCALIZATION &amp; CROPPING
                             <div class="arch-sub">dlib / face_recognition • 68 Landmarks • Affine Warp • 112×112 px Normalization</div>
+                            <div style="font-size: 12pt; color: #cbd5e1; margin-top: 0.02in; font-family: monospace;">Normalized Face Crops: [Batch, T=20, C=3, H=112, W=112] (ImageNet Norm)</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
 
                         <div class="arch-box">
                             ResNeXt-50 (32×4d) SPATIAL FEATURE BACKBONE
-                            <div class="arch-sub">Grouped Convolutions (Cardinality=32) • 2048-D Spatial Feature Embeddings</div>
+                            <div class="arch-sub">Grouped Convolutions (Cardinality=32, Bottleneck Width=4) • Pretrained Weights</div>
+                            <div style="font-size: 12pt; color: #cbd5e1; margin-top: 0.02in; font-family: monospace;">Spatial Embedding Vectors: [Batch, T=20, Feature_Dim=2048]</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
 
                         <div class="arch-box">
                             LSTM TEMPORAL SEQUENCE MODELING
-                            <div class="arch-sub">Recurrent Memory Cells (512 Units) • Inter-Frame Optical Flow &amp; Blinking Tracker</div>
+                            <div class="arch-sub">Recurrent Memory Cells (512 Hidden Units) • Inter-Frame Optical Flow &amp; Blinking Tracker</div>
+                            <div style="font-size: 12pt; color: #cbd5e1; margin-top: 0.02in; font-family: monospace;">Sequence Hidden State: $h_t = 	LSTM(x_t, h_{t-1}) 
+→$ [Batch, 1024]</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
@@ -1035,6 +1096,7 @@
                         <div class="arch-box highlight">
                             PREDICTION VERDICT &amp; EXPLAINABILITY
                             <div class="arch-sub">Dropout(0.4) • Softmax / Sigmoid Probability (REAL vs. FAKE) • Grad-CAM Heatmap</div>
+                            <div style="font-size: 12pt; color: #0a192f; font-weight: 700; margin-top: 0.02in; font-family: monospace;">Final Output: Verdict (REAL/FAKE) • Confidence % • Boundary Artifacts</div>
                         </div>
 
                     </div>
@@ -1109,7 +1171,7 @@
                         </div>
                     </div>
                     <div class="fig-box" style="margin: 0.02in 0; background: #ffffff;">
-                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; height: 2.3in; object-fit: contain; display: block; margin: 0 auto;">
+                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; height: 3.2in; object-fit: contain; display: block; margin: 0 auto;">
                         <div class="fig-caption" style="color: #0a192f; margin-top: 0.02in;">
                             <span>Figure 3:</span> Cross-Dataset Confusion Matrix (True Real: 91.2%, True Fake: 84.8%).
                         </div>
@@ -1125,7 +1187,7 @@
                     </div>
                 </article>
 
-                <!-- 7. HYPERPARAMETERS -->
+                                <!-- 7. HYPERPARAMETERS -->
                 <article class="card">
                     <h2>7. MODEL HYPERPARAMETERS</h2>
                     <table>
@@ -1138,14 +1200,35 @@
                             <tr><td>Crop Resolution</td><td>112 × 112 Pixels (RGB Normalized)</td></tr>
                             <tr><td>Optimization</td><td>Adam (lr=1e-5, weight_decay=1e-5)</td></tr>
                             <tr><td>Loss Objective</td><td>BCEWithLogitsLoss (Binary Cross-Entropy)</td></tr>
-                            <tr><td>Regularization</td><td>Dropout(p=0.4) + StepLR Schedule</td></tr>
+                            <tr><td>Regularization</td><td>Dropout(p=0.4) + StepLR Schedule (γ=0.1)</td></tr>
                             <tr><td>Inference Latency</td><td>~1.85 Seconds / Video (CUDA GPU)</td></tr>
                             <tr><td>Explainability</td><td>Grad-CAM / Class Activation Maps</td></tr>
                         </tbody>
                     </table>
+
+                    <!-- Training Protocol & Hardware Box to fill space -->
+                    <div style="background: #f8fafc; border: 1.5px solid #0a192f; border-left: 4px solid #00d4ff; border-radius: 0.07in; padding: 0.06in 0.08in; margin-top: 0.04in;">
+                        <div style="font-size: 13.5pt; font-weight: 800; color: #0a192f; margin-bottom: 0.03in; text-align: center;">
+                            TRAINING PROTOCOL &amp; OPTIMIZATION METRICS
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.04in; font-size: 12.5pt; color: #1e293b;">
+                            <div style="background: #ffffff; padding: 0.03in 0.05in; border-radius: 0.04in; border: 1px solid #cbd5e1;">
+                                <b>Epochs:</b> 25 Full Epochs (Batch=32)
+                            </div>
+                            <div style="background: #ffffff; padding: 0.03in 0.05in; border-radius: 0.04in; border: 1px solid #cbd5e1;">
+                                <b>Loss Decay:</b> 0.692  &rarr;  0.284 Final
+                            </div>
+                            <div style="background: #ffffff; padding: 0.03in 0.05in; border-radius: 0.04in; border: 1px solid #cbd5e1;">
+                                <b>Augmentation:</b> Flip, Affine, Color Jitter
+                            </div>
+                            <div style="background: #ffffff; padding: 0.03in 0.05in; border-radius: 0.04in; border: 1px solid #cbd5e1;">
+                                <b>Grad Clipping:</b> Norm threshold = 1.0
+                            </div>
+                        </div>
+                    </div>
                 </article>
 
-                <!-- 8. SHOWCASE QR -->
+                                <!-- 8. SHOWCASE QR -->
                 <article class="card">
                     <h2>8. OFFICIAL PROJECT SHOWCASE</h2>
                     <div class="showcase-qr-card">
@@ -1155,12 +1238,13 @@
                         <div class="showcase-qr-title">SCAN FOR PROJECT SHOWCASE</div>
                         <div class="showcase-qr-url">deepfakedetection-cyan.vercel.app</div>
                         <div class="showcase-qr-desc">
-                            Scan with smartphone to explore Live Interactive Architecture, 8K Forensics, and Benchmark Analytics!
+                            Scan with any smartphone camera to launch the interactive research portal, examine 8K forensics, and test prediction pipelines!
                         </div>
                         <div class="feature-pills">
-                            <span class="pill">📱 Mobile Ready</span>
+                            <span class="pill">📱 Mobile &amp; Desktop</span>
                             <span class="pill">🔬 8K Heatmaps</span>
-                            <span class="pill">⚡ 24/7 Vercel</span>
+                            <span class="pill">⚡ 24/7 Vercel Edge</span>
+                            <span class="pill">🛡️ 100% Free Access</span>
                         </div>
                     </div>
 
