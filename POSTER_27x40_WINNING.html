@@ -7,7 +7,7 @@
     <!--
     =============================================================================
     K. D. POLYTECHNIC, PATAN - DEPARTMENT OF COMPUTER ENGINEERING
-    ACADEMIC / TECHNICAL POSTER PRESENTATION COMPETITION (WINNING EDITION)
+    ACADEMIC / TECHNICAL POSTER PRESENTATION COMPETITION
     DIMENSIONS: 27 x 40 INCHES (PORTRAIT)
     STRICT MARGINS: TOP & BOTTOM: 2.0 INCHES | LEFT & RIGHT: 1.5 INCHES
     COLOR PALETTE (MAX 3 MAIN COLORS):
@@ -47,6 +47,7 @@
             position: relative;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
+            overflow: hidden;
         }
 
         /* Strict Margins: Left/Right 1.5 in, Top/Bottom 2.0 in */
@@ -59,16 +60,19 @@
             justify-content: space-between;
         }
 
-        /* ================= TOP BANNER ================= */
+        /* ================= TOP BANNER (~3.8 INCHES) ================= */
         .banner {
+            height: 3.8in;
             background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
             color: #ffffff;
             text-align: center;
-            padding: 0.46in 0.6in 0.36in;
+            padding: 0.35in 0.6in 0.25in;
             border-bottom: 0.16in solid #00d4ff;
             border-radius: 0.22in;
             box-shadow: 0 12px 32px rgba(10, 25, 47, 0.25);
-            margin-bottom: 0.26in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .college-info {
@@ -76,7 +80,6 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             color: #ffffff;
-            margin-bottom: 0.05in;
         }
 
         .department {
@@ -84,25 +87,22 @@
             font-weight: 600;
             color: #00d4ff;
             letter-spacing: 0.04em;
-            margin-bottom: 0.16in;
         }
 
         .project-title {
-            font-size: 62pt;
+            font-size: 64pt;
             font-weight: 900;
             color: #ffffff;
             line-height: 1.12;
             text-transform: uppercase;
             letter-spacing: 0.02em;
-            margin-bottom: 0.1in;
             text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
         }
 
         .project-subtitle {
-            font-size: 29pt;
+            font-size: 30pt;
             font-weight: 600;
             color: #00d4ff;
-            margin-bottom: 0.2in;
         }
 
         .meta-info {
@@ -112,64 +112,68 @@
             font-size: 25pt;
             font-weight: 700;
             color: #e2e8f0;
-            padding: 0.1in 0.8in 0;
+            padding: 0.08in 0.8in 0;
             border-top: 2px solid rgba(0, 212, 255, 0.35);
         }
 
-        /* ================= 3-COLUMN MAIN BODY ================= */
+        /* ================= 3-COLUMN MAIN BODY (EXACTLY 27.2 INCHES) ================= */
         .poster-body {
+            height: 27.2in;
             display: grid;
             grid-template-columns: 1fr 1.25fr 1fr;
-            gap: 0.34in;
-            flex: 1;
+            gap: 0.35in;
         }
 
         .column {
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 0.24in;
+            justify-content: space-between;
         }
 
         /* Card / Section */
         .card {
             background: #ffffff;
             border-radius: 0.18in;
-            padding: 0.26in 0.32in;
+            padding: 0.32in 0.36in;
             box-shadow: 0 6px 20px rgba(10, 25, 47, 0.06);
             border-top: 8px solid #00d4ff;
             border-left: 1px solid rgba(10, 25, 47, 0.08);
             border-right: 1px solid rgba(10, 25, 47, 0.08);
             border-bottom: 1px solid rgba(10, 25, 47, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         h2 {
             font-size: 38pt;
             font-weight: 800;
             color: #0a192f;
-            margin-bottom: 0.14in;
+            margin-bottom: 0.12in;
             border-bottom: 5px solid #00d4ff;
-            padding-bottom: 0.04in;
+            padding-bottom: 0.05in;
             display: inline-block;
             letter-spacing: 0.02em;
         }
 
         p {
-            font-size: 22pt;
-            line-height: 1.38;
+            font-size: 23pt;
+            line-height: 1.45;
             color: #1e293b;
-            margin-bottom: 0.1in;
+            margin-bottom: 0.08in;
         }
 
         ul, ol {
-            padding-left: 0.42in;
+            padding-left: 0.44in;
             margin-bottom: 0.08in;
         }
 
         li {
-            font-size: 21.5pt;
-            line-height: 1.36;
+            font-size: 22.5pt;
+            line-height: 1.42;
             color: #1e293b;
-            margin-bottom: 0.06in;
+            margin-bottom: 0.08in;
         }
 
         b, strong {
@@ -177,72 +181,70 @@
             font-weight: 800;
         }
 
-        /* Scientific Figure Box */
+        /* Large Scientific Figure Box */
         .fig-box {
             background: #0a192f;
-            border: 3px solid #00d4ff;
-            border-radius: 0.14in;
-            padding: 0.12in;
+            border: 3.5px solid #00d4ff;
+            border-radius: 0.16in;
+            padding: 0.15in;
             text-align: center;
-            margin: 0.08in 0;
-            box-shadow: 0 6px 18px rgba(10, 25, 47, 0.15);
+            box-shadow: 0 8px 24px rgba(10, 25, 47, 0.2);
+            margin: 0.1in 0;
         }
 
         .fig-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.08in;
+            width: 100%;
+            border-radius: 0.1in;
             display: block;
             margin: 0 auto;
         }
 
         .fig-caption {
-            font-size: 16.5pt;
+            font-size: 18pt;
             font-weight: 700;
             color: #ffffff;
-            margin-top: 0.06in;
-            line-height: 1.28;
+            margin-top: 0.1in;
+            line-height: 1.34;
         }
 
         .fig-caption span {
             color: #00d4ff;
         }
 
-        /* Architecture Diagram Flow */
+        /* Architecture Diagram Flow (Column 2) */
         .arch-diagram {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.07in;
-            margin-top: 0.05in;
-            margin-bottom: 0.05in;
+            gap: 0.09in;
+            margin: 0.08in 0;
         }
 
         .arch-box {
             background-color: #0a192f;
             color: #ffffff;
-            border: 3px solid #00d4ff;
-            border-radius: 0.12in;
-            padding: 0.13in 0.26in;
+            border: 3.5px solid #00d4ff;
+            border-radius: 0.14in;
+            padding: 0.16in 0.28in;
             text-align: center;
-            font-size: 22.5pt;
+            font-size: 24pt;
             font-weight: 800;
-            width: 95%;
-            box-shadow: 0 5px 12px rgba(10, 25, 47, 0.14);
+            width: 96%;
+            box-shadow: 0 6px 14px rgba(10, 25, 47, 0.16);
         }
 
         .arch-box.highlight {
             background: #00d4ff;
             color: #0a192f;
-            border: 3px solid #0a192f;
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.35);
+            border: 3.5px solid #0a192f;
+            box-shadow: 0 8px 22px rgba(0, 212, 255, 0.38);
         }
 
         .arch-sub {
-            font-size: 16.5pt;
+            font-size: 18pt;
             font-weight: 600;
             color: #00d4ff;
-            margin-top: 0.02in;
+            margin-top: 0.03in;
         }
 
         .arch-box.highlight .arch-sub {
@@ -257,30 +259,30 @@
         }
 
         .flow-line {
-            width: 0.05in;
-            height: 0.13in;
+            width: 0.06in;
+            height: 0.16in;
             background-color: #00d4ff;
         }
 
         .flow-head {
             width: 0;
             height: 0;
-            border-left: 0.1in solid transparent;
-            border-right: 0.1in solid transparent;
-            border-top: 0.13in solid #00d4ff;
+            border-left: 0.12in solid transparent;
+            border-right: 0.12in solid transparent;
+            border-top: 0.16in solid #00d4ff;
         }
 
         /* Table */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 19pt;
-            margin-top: 0.08in;
+            font-size: 20.5pt;
+            margin: 0.1in 0;
         }
 
         th, td {
             border: 2px solid #0a192f;
-            padding: 0.08in 0.12in;
+            padding: 0.11in 0.15in;
             text-align: left;
         }
 
@@ -288,7 +290,7 @@
             background-color: #0a192f;
             color: #00d4ff;
             font-weight: 800;
-            font-size: 19.5pt;
+            font-size: 21.5pt;
         }
 
         tr:nth-child(even) {
@@ -298,8 +300,8 @@
         /* Stat Callout */
         .stat-container {
             display: flex;
-            gap: 0.15in;
-            margin: 0.08in 0;
+            gap: 0.18in;
+            margin: 0.1in 0;
         }
 
         .stat-box {
@@ -307,21 +309,21 @@
             background: #0a192f;
             color: #00d4ff;
             text-align: center;
-            padding: 0.15in;
-            border-radius: 0.12in;
-            border: 3px solid #00d4ff;
-            box-shadow: 0 6px 14px rgba(10, 25, 47, 0.18);
+            padding: 0.22in;
+            border-radius: 0.14in;
+            border: 3.5px solid #00d4ff;
+            box-shadow: 0 6px 16px rgba(10, 25, 47, 0.18);
         }
 
         .stat-number {
-            font-size: 56pt;
+            font-size: 64pt;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 0.03in;
+            margin-bottom: 0.04in;
         }
 
         .stat-label {
-            font-size: 18.5pt;
+            font-size: 20pt;
             font-weight: 800;
             letter-spacing: 0.06em;
             color: #ffffff;
@@ -330,35 +332,37 @@
         /* PROMINENT SHOWCASE QR CARD (ONLY SHOWCASE) */
         .showcase-qr-card {
             background: #f8fafc;
-            border: 3px solid #0a192f;
-            border-top: 6px solid #00d4ff;
-            border-radius: 0.16in;
-            padding: 0.22in;
+            border: 3.5px solid #0a192f;
+            border-top: 8px solid #00d4ff;
+            border-radius: 0.18in;
+            padding: 0.28in 0.24in;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             box-shadow: 0 8px 24px rgba(10, 25, 47, 0.08);
+            height: 100%;
         }
 
         .qr-wrapper {
             background: #ffffff;
-            padding: 0.1in;
-            border: 2px solid #00d4ff;
-            border-radius: 0.12in;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-            margin-bottom: 0.1in;
+            padding: 0.14in;
+            border: 2.5px solid #00d4ff;
+            border-radius: 0.16in;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+            margin-bottom: 0.14in;
             display: inline-block;
         }
 
         .showcase-qr-img {
-            width: 2.1in;
-            height: 2.1in;
+            width: 2.5in;
+            height: 2.5in;
             display: block;
         }
 
         .showcase-qr-title {
-            font-size: 21pt;
+            font-size: 23pt;
             font-weight: 900;
             color: #0a192f;
             margin-bottom: 0.04in;
@@ -366,36 +370,40 @@
         }
 
         .showcase-qr-url {
-            font-size: 16pt;
-            font-weight: 700;
+            font-size: 18pt;
+            font-weight: 800;
             color: #0077ff;
-            margin-bottom: 0.06in;
+            margin-bottom: 0.08in;
             text-decoration: underline;
         }
 
         .showcase-qr-desc {
-            font-size: 15.5pt;
+            font-size: 16.5pt;
             color: #475569;
-            line-height: 1.32;
+            line-height: 1.36;
         }
 
-        /* Bottom Section */
+        /* ================= BOTTOM BAR (~4.2 INCHES) ================= */
         .bottom-bar {
-            margin-top: 0.22in;
+            height: 4.2in;
             display: grid;
             grid-template-columns: 1.9fr 1.1fr;
-            gap: 0.34in;
+            gap: 0.35in;
+        }
+
+        .bottom-bar .card {
+            height: 100%;
         }
 
         .references-list {
-            font-size: 16pt;
-            padding-left: 0.3in;
+            font-size: 16.5pt;
+            padding-left: 0.32in;
         }
 
         .references-list li {
-            font-size: 16pt;
-            line-height: 1.28;
-            margin-bottom: 0.04in;
+            font-size: 16.5pt;
+            line-height: 1.34;
+            margin-bottom: 0.05in;
             color: #334155;
         }
     </style>
@@ -415,52 +423,57 @@
             </div>
         </header>
 
-        <!-- ================= MAIN 3-COLUMN BODY ================= -->
+        <!-- ================= MAIN 3-COLUMN BODY (EXACTLY 27.2 INCHES, ZERO GAP) ================= -->
         <main class="poster-body">
 
             <!-- ================= COLUMN 1: LEFT ================= -->
             <section class="column">
                 
-                <article class="card">
+                <!-- 1. PROBLEM (HEIGHT: ~6.2 IN) -->
+                <article class="card" style="height: 6.2in;">
                     <h2>1. THE DEEPFAKE PROBLEM</h2>
-                    <p>Deepfakes use Generative Adversarial Networks (GANs) and diffusion models to replace human faces in videos with dangerous realism. Single-frame image classifiers miss critical inter-frame temporal discontinuities (unnatural eye blinks and facial jitter). This project engineers a complete <b>Spatio-Temporal Hybrid Framework</b> to accurately verify video authenticity.</p>
+                    <p>Deepfakes utilize Generative Adversarial Networks (GANs) and diffusion synthesis to replace human facial identities in videos with alarming sensory realism.</p>
+                    <p>Conventional single-frame CNNs analyze isolated stills, failing to detect critical inter-frame temporal discontinuities such as unnatural eye blink intervals, facial jitter, and illumination phase drift. This project engineers a complete <b>Spatio-Temporal Hybrid Framework</b> to deliver robust, explainable video verification.</p>
                 </article>
 
-                <article class="card">
+                <!-- 2. FORENSIC EVIDENCE (HEIGHT: ~13.6 IN) -->
+                <article class="card" style="height: 13.6in;">
                     <h2>2. FORENSIC VISUAL EVIDENCE</h2>
                     <div class="fig-box">
-                        <img src="poster_visual_option1_forensics_split.jpg" alt="Scientific Forensics Split Portrait" class="fig-img">
+                        <img src="poster_visual_option1_forensics_split.jpg" alt="Scientific Forensics Split Portrait" class="fig-img" style="height: 4.8in; object-fit: cover;">
                         <div class="fig-caption">
                             <span>Figure 1:</span> High-Tech Forensics Split Analysis.<br>
                             <b>Left:</b> Authentic Skin Texture & 68-Point Biometric Landmarks.<br>
                             <b>Right:</b> Deepfake Boundary Artifacts with Grad-CAM Heatmap Trace.
                         </div>
                     </div>
-                    <p><b>Diagnostic Finding:</b> Manipulated facial regions exhibit acute thermal concentration along boundary contours, exposing GAN blending edges invisible to the naked eye.</p>
+                    <p><b>Diagnostic Finding:</b> Manipulated facial crops demonstrate acute thermal energy concentration along boundary contours, exposing synthetic blending edges undetectable to the human eye.</p>
                 </article>
 
-                <article class="card">
-                    <h2>3. CORE OBJECTIVES</h2>
+                <!-- 3. OBJECTIVES & CORPUS (HEIGHT: ~6.8 IN) -->
+                <article class="card" style="height: 6.8in;">
+                    <h2>3. CORE OBJECTIVES & CORPUS</h2>
                     <ul>
-                        <li><b>Spatio-Temporal Fusion:</b> Integrate ResNeXt50 with LSTM recurrent units to catch micro-flicker anomalies.</li>
-                        <li><b>Explainability (XAI):</b> Generate Class Activation Maps (CAM) identifying tampered facial zones.</li>
-                        <li><b>Web Production:</b> Deploy a responsive Django platform with real-time client landmark tracking.</li>
+                        <li><b>Spatio-Temporal Fusion:</b> Couple ResNeXt-50 grouped convolutions with LSTM recurrent memory cells to capture micro-flicker anomalies.</li>
+                        <li><b>Explainability (XAI):</b> Generate Class Activation Maps (CAM) identifying tampered facial zones for forensic evidentiary trust.</li>
+                        <li><b>Benchmark Corpus:</b> Validated on <b>23,186 video sequences</b> across DFDC (Meta AI), Celeb-DF v2, and FaceForensics++ benchmarks.</li>
                     </ul>
                 </article>
 
             </section>
 
-            <!-- ================= COLUMN 2: CENTER (CORE ARCHITECTURE) ================= -->
+            <!-- ================= COLUMN 2: CENTER ================= -->
             <section class="column">
                 
-                <article class="card" style="border-top: 10px solid #00d4ff; box-shadow: 0 10px 28px rgba(10, 25, 47, 0.12);">
+                <!-- 4. SYSTEM ARCHITECTURE (HEIGHT: ~14.4 IN) -->
+                <article class="card" style="height: 14.4in; border-top: 10px solid #00d4ff; box-shadow: 0 10px 28px rgba(10, 25, 47, 0.12);">
                     <h2 style="text-align: center; width: 100%; border-bottom: none; font-size: 38pt; margin-bottom: 0.12in;">4. SYSTEM ARCHITECTURE</h2>
                     
                     <div class="arch-diagram">
                         
                         <div class="arch-box">
                             USER WEB INTERFACE
-                            <div class="arch-sub">Django MVT • Bootstrap 5 • face-api.js Tracking</div>
+                            <div class="arch-sub">Django MVT • Bootstrap 5 • Client-Side face-api.js Screening</div>
                         </div>
 
                         <div class="flow-arrow"><div class="flow-line"></div><div class="flow-head"></div></div>
@@ -501,10 +514,11 @@
                     </div>
                 </article>
 
-                <article class="card">
+                <!-- 5. TEMPORAL PIPELINE (HEIGHT: ~12.2 IN) -->
+                <article class="card" style="height: 12.2in;">
                     <h2>5. TEMPORAL PIPELINE VISUALIZATION</h2>
                     <div class="fig-box">
-                        <img src="poster_visual_option2_pipeline_lstm.jpg" alt="Video Frame Extraction & LSTM Pipeline" class="fig-img">
+                        <img src="poster_visual_option2_pipeline_lstm.jpg" alt="Video Frame Extraction & LSTM Pipeline" class="fig-img" style="height: 4.6in; object-fit: contain;">
                         <div class="fig-caption">
                             <span>Figure 2:</span> Consecutive Frame Extraction & Optical Flow LSTM Tracking.<br>
                             Sequentially links facial video crops into Recurrent Neural Units for temporal classification.
@@ -518,7 +532,8 @@
             <!-- ================= COLUMN 3: RIGHT ================= -->
             <section class="column">
                 
-                <article class="card">
+                <!-- 6. BENCHMARK (HEIGHT: ~10.2 IN) -->
+                <article class="card" style="height: 10.2in;">
                     <h2>6. BENCHMARK EVALUATION</h2>
                     <div class="stat-container">
                         <div class="stat-box">
@@ -531,14 +546,15 @@
                         </div>
                     </div>
                     <div class="fig-box" style="margin: 0.08in 0; background: #ffffff;">
-                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" class="fig-img" style="max-height: 2.2in;">
+                        <img src="fig_confusion_matrix.png" alt="Confusion Matrix" class="fig-img" style="height: 2.8in; object-fit: contain;">
                         <div class="fig-caption" style="color: #0a192f;">
                             <span>Figure 3:</span> Cross-Dataset Confusion Matrix (True Real: 91.2%, True Fake: 84.8%).
                         </div>
                     </div>
                 </article>
 
-                <article class="card">
+                <!-- 7. HYPERPARAMETERS (HEIGHT: ~7.6 IN) -->
+                <article class="card" style="height: 7.6in;">
                     <h2>7. MODEL HYPERPARAMETERS</h2>
                     <table>
                         <thead>
@@ -554,7 +570,8 @@
                     </table>
                 </article>
 
-                <article class="card">
+                <!-- 8. SHOWCASE QR (HEIGHT: ~8.8 IN) -->
+                <article class="card" style="height: 8.8in;">
                     <h2>8. OFFICIAL PROJECT SHOWCASE</h2>
                     <div class="showcase-qr-card">
                         <div class="qr-wrapper">
@@ -575,8 +592,8 @@
         <!-- ================= BOTTOM SECTION ================= -->
         <footer class="bottom-bar">
             
-            <div class="card" style="margin-bottom: 0;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3in;">
+            <div class="card">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in; height: 100%;">
                     <div>
                         <h2>9. APPLICATIONS</h2>
                         <ul>
@@ -593,7 +610,7 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-bottom: 0;">
+            <div class="card">
                 <h2>11. REFERENCES</h2>
                 <ol class="references-list">
                     <li>Facebook AI, "The Deepfake Detection Challenge (DFDC) Dataset", arXiv:2006.07397.</li>
