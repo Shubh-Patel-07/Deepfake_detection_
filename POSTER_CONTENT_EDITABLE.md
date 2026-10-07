@@ -1,4 +1,4 @@
-# 📋 POSTER CONTENT (EDITABLE MASTER TEXT - ULTIMATE WINNING EDITION)
+# 📋 POSTER CONTENT (EDITABLE MASTER TEXT - SHOWCASE EDITION)
 ## 27 × 40 Inches Portrait Academic Poster with 8K Scientific Forensics Visuals
 **Institution:** K. D. POLYTECHNIC, PATAN  
 **Department:** DEPARTMENT OF COMPUTER ENGINEERING  
@@ -18,13 +18,13 @@
 
 ---
 
-### [SECTION 1: INTRODUCTION & PROBLEM]
+### [SECTION 1: THE DEEPFAKE PROBLEM]
 Deepfakes use Generative Adversarial Networks (GANs) and diffusion models to replace human faces in videos with dangerous realism. Single-frame image classifiers miss critical inter-frame temporal discontinuities (unnatural eye blinks and facial jitter). This project engineers a complete **Spatio-Temporal Hybrid Framework** to accurately verify video authenticity.
 
 ---
 
-### [SECTION 2: VISUAL FORENSICS EVIDENCE]
-- **Image File:** `poster_visual_option1_forensics_split.jpg` *(Can also be swapped with `poster_visual_option3_academic_split.jpg`)*
+### [SECTION 2: FORENSIC VISUAL EVIDENCE]
+- **Image File:** `poster_visual_option1_forensics_split.jpg`
 - **Caption:**  
   *Figure 1: High-Tech Forensics Split Analysis.*  
   - **Left:** Authentic Skin Texture & 68-Point Biometric Landmarks Mesh.  
@@ -67,7 +67,7 @@ Deepfakes use Generative Adversarial Networks (GANs) and diffusion models to rep
 
 ---
 
-### [SECTION 7: HYPERPARAMETERS]
+### [SECTION 7: MODEL HYPERPARAMETERS]
 | Parameter | Engineering Value |
 | :--- | :--- |
 | **Architecture** | ResNeXt-50 + LSTM |
@@ -78,9 +78,11 @@ Deepfakes use Generative Adversarial Networks (GANs) and diffusion models to rep
 
 ---
 
-### [SECTION 8: LIVE DEMO & SHOWCASE QR CODES]
-- **Showcase Portal:** `https://deepfakedetection-cyan.vercel.app/` (`qr_showcase_vercel.png`)
-- **Live AI Engine:** `https://petite-discover-precut.ngrok-free.dev/` (`qr_live_demo_ngrok.png`)
+### [SECTION 8: OFFICIAL PROJECT SHOWCASE QR]
+- **Card Title:** SCAN FOR PROJECT SHOWCASE
+- **URL:** `https://deepfakedetection-cyan.vercel.app/`
+- **Image File:** `qr_showcase_vercel.png`
+- **Description:** Scan with any smartphone to open the 24/7 Live Vercel Showcase with Interactive Architecture, 8K Forensics, and Video Verification!
 
 ---
 
