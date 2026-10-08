@@ -949,7 +949,7 @@
         <header class="banner">
             <div class="banner-flex">
                 <div class="banner-logo">
-                    <img src="poster_dept_logo.jpg" alt="Department of Computer Engineering Logo" class="header-logo-img">
+                    <img src="college_logo_hd.png" alt="Kilachand Devchand Polytechnic Patan Logo" class="header-logo-img">
                 </div>
                 <div class="banner-text-center">
                     <div class="college-info">K. D. POLYTECHNIC, PATAN</div>
@@ -962,7 +962,7 @@
                     </div>
                 </div>
                 <div class="banner-logo">
-                    <img src="poster_college_logo.jpg" alt="Kilachand Devchand Polytechnic Patan Logo" class="header-logo-img">
+                    <img src="dept_logo_hd.png" alt="Department of Computer Engineering Logo" class="header-logo-img">
                 </div>
             </div>
         </header>
@@ -987,10 +987,23 @@
                     </div>
 
                     <!-- Synthetic Generation Mechanism Flow -->
-                    <div class="fig-box" style="margin: 0.04in 0; padding: 0.04in;">
-                        <img src="fig_deepfake_threat_comparison.png" alt="Authentic Human vs Synthetic Deepfake Comparison" style="width: 100%; height: 2.2in; object-fit: contain; background: #0a192f; border-radius: 0.05in; display: block; margin: 0 auto;">
-                        <div class="fig-caption" style="font-size: 11pt; line-height: 1.22; margin-top: 0.02in;">
-                            <span>Visual Comparison:</span> Authentic Reference Video (Left) vs. Generative Face-Swap Synthesis (Right) exhibiting boundary blending seams and subtle textural artifacts.
+                    <div style="background: #0a192f; color: #ffffff; border-radius: 0.07in; padding: 0.06in 0.08in; margin: 0.04in 0; border: 1.5px solid #00d4ff;">
+                        <div style="font-size: 13.5pt; font-weight: 800; color: #00d4ff; text-align: center; margin-bottom: 0.02in; letter-spacing: 0.02em;">
+                            ANATOMY OF A GENERATIVE FACE-SWAP PIPELINE
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.04in; font-size: 11.5pt; text-align: center;">
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">1. Face Alignment</b>
+                                68 Biometric landmarks &amp; Affine crop
+                            </div>
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">2. Latent Swap</b>
+                                Shared Encoder &rarr; Target Decoder
+                            </div>
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.04in; border-radius: 0.04in; border-top: 2px solid #00d4ff;">
+                                <b style="color: #ffffff; display: block;">3. Boundary Blend</b>
+                                Poisson image editing &amp; Color transfer
+                            </div>
                         </div>
                     </div>
 
@@ -1144,9 +1157,9 @@
                 <article class="card">
                     <h2>5. TEMPORAL PIPELINE VISUALIZATION</h2>
                     <div class="fig-box">
-                        <img src="snapshot_1_web_ui_tracking.png" alt="Web Application Video Screening & 68-Keypoint Mesh Snapshot" class="fig-img-pipeline" style="height: 3.9in; object-fit: contain; background: #0a192f; border-radius: 0.06in;">
+                        <img src="poster_visual_option2_pipeline_lstm.jpg" alt="Video Frame Extraction & LSTM Pipeline" class="fig-img-pipeline">
                         <div class="fig-caption">
-                            <span>Figure 2 (UI Snapshot 1):</span> Real-Time Web Video Screening & 68-Keypoint Facial Tracking. Browser-based face-api.js mesh tracks inter-frame spatial boundaries before ResNeXt50+LSTM temporal inference.
+                            <span>Figure 2:</span> Consecutive Frame Extraction & Optical Flow LSTM Tracking.<br>Sequentially links facial video crops into Recurrent Neural Units for temporal classification.
                         </div>
                     </div>
                     
@@ -1267,31 +1280,31 @@
 
                                 <!-- 8. SHOWCASE QR -->
                 <article class="card">
-                    <h2>8. SYSTEM IMPLEMENTATION &amp; UI SNAPSHOTS</h2>
-                    
-                    <!-- Forensic Report Snapshot Box -->
-                    <div class="fig-box" style="margin-bottom: 0.05in; padding: 0.05in;">
-                        <img src="snapshot_2_forensic_report.png" alt="Forensic Verification Audit Report UI Snapshot" style="width: 100%; height: 3.2in; object-fit: contain; background: #0a192f; border-radius: 0.05in; display: block; margin: 0 auto;">
-                        <div class="fig-caption" style="font-size: 11.5pt; line-height: 1.25; margin-top: 0.03in;">
-                            <span>Figure 4 (UI Snapshot 2):</span> Automated Forensic Verification Report. Displays Authenticity Verdict (FAKE), 91.4% confidence gauge, 20-frame decomposed sequence, and 112×112 face landmark crops.
+                    <h2>8. OFFICIAL PROJECT SHOWCASE &amp; CLOUD DEPLOYMENT</h2>
+                    <div class="showcase-qr-card">
+                        <div class="qr-wrapper">
+                            <img src="qr_showcase_vercel.png" alt="Official Showcase QR" class="showcase-qr-img">
+                        </div>
+                        <div class="showcase-qr-title">SCAN FOR INTERACTIVE RESEARCH PORTAL</div>
+                        <div class="showcase-qr-url">deepfakedetection-cyan.vercel.app</div>
+                        <div class="showcase-qr-desc">
+                            Scan with any smartphone camera to launch the live detection platform, inspect high-resolution Grad-CAM heatmaps, and test video prediction models!
+                        </div>
+                        <div class="feature-pills">
+                            <span class="pill">&#128241; Mobile &amp; Desktop</span>
+                            <span class="pill">&#128300; 8K Forensics</span>
+                            <span class="pill">&#9889; 24/7 Vercel Edge</span>
+                            <span class="pill">&#128737;&#65039; 100% Free Access</span>
                         </div>
                     </div>
 
-                    <!-- Compact Showcase QR Strip -->
-                    <div style="background: linear-gradient(135deg, #0a192f 0%, #112240 100%); border: 2px solid #00d4ff; border-radius: 0.08in; padding: 0.06in 0.08in; display: flex; align-items: center; gap: 0.12in; box-shadow: 0 4px 14px rgba(10, 25, 47, 0.18);">
-                        <div style="background: #ffffff; padding: 0.04in; border-radius: 0.06in; flex-shrink: 0; border: 2px solid #00d4ff;">
-                            <img src="qr_showcase_vercel.png" alt="Official Showcase QR" style="width: 1.2in; height: 1.2in; display: block;">
-                        </div>
-                        <div style="flex: 1; color: #ffffff;">
-                            <div style="font-size: 15pt; font-weight: 900; color: #00d4ff; line-height: 1.15; letter-spacing: 0.02em;">
-                                SCAN FOR LIVE DEMO &amp; TELEMETRY
-                            </div>
-                            <div style="font-size: 12.5pt; font-family: monospace; color: #38bdf8; margin: 0.02in 0;">
-                                deepfakedetection-cyan.vercel.app
-                            </div>
-                            <div style="font-size: 11pt; color: #cbd5e1; line-height: 1.2;">
-                                Scan to test 20-frame temporal analysis, view 68-point tracking mesh, and verify deepfake authenticity in real time.
-                            </div>
+                    <div class="live-demo-flow-box">
+                        <div class="demo-flow-title">INTERACTIVE CLOUD DEMONSTRATION PROTOCOL</div>
+                        <div class="demo-step-list">
+                            <div class="demo-step-item"><b>1. Scan QR Code:</b> Instantly launch the hosted responsive portal on any mobile device or browser.</div>
+                            <div class="demo-step-item"><b>2. Input Selection:</b> Select pre-loaded benchmark clips or upload custom video files for analysis.</div>
+                            <div class="demo-step-item"><b>3. Client Landmark Mesh:</b> Real-time 68-point face tracking executes in-browser via TensorFlow.js.</div>
+                            <div class="demo-step-item"><b>4. Diagnostic Report:</b> Inspect probability verdict (REAL/FAKE) and visual Grad-CAM tamper localization heatmaps.</div>
                         </div>
                     </div>
                 </article>
